@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", mostrarProductos);
+
+if (!localStorage.getItem("nombreUsuario")) {
+    window.location.href = "index.html"; //!SI NO INGRESO NOMBRE DE USUARIO, REDIRIGE A INDEX.HTML
+}
+
+
 const productos = [
 {
     id: 1,
@@ -68,4 +75,4 @@ productos.forEach(producto => {
 });
 }
 
-document.addEventListener("DOMContentLoaded", mostrarProductos);
+
