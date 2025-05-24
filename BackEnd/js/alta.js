@@ -1,42 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
-const form = document.getElementById("formAlta");
-const inputImagen = document.getElementById("imagen");
-const preview = document.getElementById("previewImagen");
+    const form = document.getElementById("formAlta");
+    const nombreInput = document.getElementById("nombre");
+    const categoriaInput = document.getElementById("categoria");
+    const precioInput = document.getElementById("precio");
+    const imagenInput = document.getElementById("imagen");
+    const preview = document.getElementById("previewImagen");
 
-inputImagen.addEventListener("input", () => {
-const url = inputImagen.value;
-preview.src = url;
-preview.style.display = url ? "block" : "none";
-});
+    const indexModificar = localStorage.getItem("modificarIndex");
+    const productos = JSON.parse(localStorage.getItem("productos")) || [];
 
-form.addEventListener("submit", (e) => {
-e.preventDefault();
+    imagenInput.addEventListener("input", () => {
+        const url = imagenInput.value.trim();
+        if (url) {
+            preview.src = url;
+            preview.style.display = "block";
+        } else {
+            preview.style.display = "none";
+        }
+    });
 
-const nombre = document.getElementById("nombre").value.trim();
-const categoria = document.getElementById("categoria").value;
-const precio = parseFloat(document.getElementById("precio").value);
-const imagen = document.getElementById("imagen").value.trim();
+    if (indexModificar !== null) {
+        const producto = productos[indexModificar];
+        if (producto) {
+            nombreInput.value = producto.nombre;
+            categoriaInput.value = producto.categoria;
+            precioInput.value = producto.precio;
+            imagenInput.value = producto.imagen;
+            preview.src = producto.imagen;
+            preview.style.display = "block";
+        }
+    }
 
-if (!nombre || !categoria || !precio || !imagen) {
-    alert("Todos los campos son obligatorios.");
-    return;
-}
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-const nuevoProducto = {
-    id: Date.now(),
-    nombre,
-    categoria,
-    precio,
-    imagen,
-};
+        const nuevoProducto = {
+            nombre: nombreInput.value.trim(),
+            categoria: categoriaInput.value.trim(),
+            precio: parseFloat(precioInput.value),
+            imagen: imagenInput.value.trim()
+        };
 
-const productosGuardados = JSON.parse(localStorage.getItem("productos")) || [];
-productosGuardados.push(nuevoProducto);
-localStorage.setItem("productos", JSON.stringify(productosGuardados));
+        if (indexModificar !== null) {
+            productos[indexModificar] = nuevoProducto;
+            localStorage.removeItem("modificarIndex");
+        } else {
+            productos.push(nuevoProducto);
+        }
 
-alert("Producto cargado correctamente.");
-form.reset();
-preview.src = "";
-preview.style.display = "none";
-});
+        localStorage.setItem("productos", JSON.stringify(productos));
+        window.location.href = "dashboard.html";
+    });
 });
