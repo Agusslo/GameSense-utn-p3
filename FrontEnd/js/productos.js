@@ -5,39 +5,7 @@ if (!localStorage.getItem("nombreUsuario")) {
 }
 
 function obtenerTodosLosProductos() {
-    const estaticos = [
-        {
-            id: 1,
-            nombre: "Auriculares Bluetooth",
-            categoria: "auriculares",
-            precio: 45000,
-            imagen: "./img/AuriUno.png"
-        },
-        {
-            id: 2,
-            nombre: "Auriculares Gamer Pro",
-            categoria: "auriculares",
-            precio: 30000,
-            imagen: "./img/AuriDos.png"
-        },
-        {
-            id: 3,
-            nombre: "Teclado Mecánico RGB",
-            categoria: "teclados",
-            precio: 55000,
-            imagen: "./img/TecladoUno.png"
-        },
-        {
-            id: 4,
-            nombre: "Teclado Membrana",
-            categoria: "teclados",
-            precio: 32000,
-            imagen: "./img/TecladoDos.png"
-        }
-    ];
-
-    const nuevos = JSON.parse(localStorage.getItem("productos")) || [];
-    return [...estaticos, ...nuevos];
+    return JSON.parse(localStorage.getItem("productos")) || [];
 }
 
 function agregarAlCarrito(producto) {
@@ -58,6 +26,12 @@ function mostrarProductos() {
     const tecladosDiv = document.getElementById("categoria-teclados");
 
     const productos = obtenerTodosLosProductos();
+
+    if (productos.length === 0) {
+        auricularesDiv.innerHTML = "<p>No hay productos disponibles.</p>";
+        tecladosDiv.innerHTML = "<p>No hay productos disponibles.</p>";
+        return;
+    }
 
     productos.forEach(producto => {
         const card = document.createElement("div");
