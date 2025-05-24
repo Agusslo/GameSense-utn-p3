@@ -1,115 +1,115 @@
-/* --- ADMIN: LOGIN --- */
-.login-container {
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #f8f9fa;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+    /* --- ADMIN: LOGIN --- */
+    .login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 
-.login-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+    .login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    }
 
-.login-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+    .login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    }
 
-.login-container input {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
+    .login-container input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    }
 
-.login-container button {
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
+    .login-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    }
 
-.login-container button:hover {
-  background-color: #0056b3;
-}
+    .login-container button:hover {
+    background-color: #0056b3;
+    }
 
-/* --- ADMIN: DASHBOARD --- */
-#lista-productos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  padding: 20px;
-}
+    /* --- ADMIN: DASHBOARD --- */
+    #lista-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px;
+    }
 
-.card-producto button {
-  margin: 6px 4px;
-}
+    .card-producto button {
+    margin: 6px 4px;
+    }
 
-/* --- ADMIN: ALTA PRODUCTO --- */
-form#formAlta {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f1f3f5;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.1);
-}
+    /* --- ADMIN: ALTA PRODUCTO --- */
+    form#formAlta {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f1f3f5;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
 
-form#formAlta div {
-  margin-bottom: 14px;
-}
+    form#formAlta div {
+    margin-bottom: 14px;
+    }
 
-form#formAlta label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
+    form#formAlta label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+    }
 
-form#formAlta input,
-form#formAlta select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
+    form#formAlta input,
+    form#formAlta select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    }
 
-form#formAlta button {
-  background-color: #198754;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 10px;
-  width: 100%;
-}
+    form#formAlta button {
+    background-color: #198754;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    }
 
-form#formAlta button:hover {
-  background-color: #146c43;
-}
+    form#formAlta button:hover {
+    background-color: #146c43;
+    }
 
-#previewImagen {
-  margin-top: 10px;
-  border-radius: 8px;
-  max-width: 100%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
+    #previewImagen {
+    margin-top: 10px;
+    border-radius: 8px;
+    max-width: 100%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
 
 
-/* --- DASHBOARD: IMAGEN--- */
-img {
-max-width: 150px;
-height: auto;
-display: block;
-margin-bottom: 10px;
-}
+    /* --- DASHBOARD: IMAGEN--- */
+    img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+    }
 
 
 
