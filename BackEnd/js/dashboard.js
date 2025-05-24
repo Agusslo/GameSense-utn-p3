@@ -25,13 +25,22 @@ productos.forEach((producto, index) => {
 
 //* ELIMINAR PRODUCTO
 function eliminarProducto(index) {
-const productos = JSON.parse(localStorage.getItem("productos")) || [];
-if (confirm(`¿Eliminar el producto "${productos[index].nombre}"?`)) {
+    const productos = JSON.parse(localStorage.getItem("productos")) || [];
+    const productoEliminado = productos[index];
+
+    if (confirm(`¿Eliminar el producto "${productoEliminado.nombre}"?`)) {
     productos.splice(index, 1);
     localStorage.setItem("productos", JSON.stringify(productos));
+
+    // lo bortro del carrito si esta
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carrito = carrito.filter(item => item.id !== productoEliminado.id);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
     mostrarDashboard();
+    }
 }
-}
+
 
 //* MODIFICAR PRODUCTO
 function modificarProducto(index) {

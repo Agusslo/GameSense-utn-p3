@@ -1,0 +1,208 @@
+/* ======== INDEX - PANTALLA DE BIENVENIDA ======== */
+
+.bienvenida {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.bienvenida h2 {
+  margin-bottom: 15px;
+}
+
+.bienvenida input {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.bienvenida button {
+  padding: 8px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.bienvenida button:hover {
+  background-color: #000;
+}
+
+
+
+/* ======== ESTILOS GENERALES ======== */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #ffffff;
+  color: #111;
+}
+
+h1, h2, h3 {
+  margin-bottom: 10px;
+}
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin-top: 20px;
+}
+
+
+/* ======== PRODUCTOS ======== */
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card-producto {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.card-producto img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.card-producto h3 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.card-producto p {
+  margin: 5px 0;
+}
+
+.card-producto button {
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+/* ======== CARRITO ======== */
+
+#carrito-contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card-producto .cantidad-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-producto .cantidad-controls button {
+  padding: 4px 8px;
+  font-size: 16px;
+}
+
+.card-producto span {
+  min-width: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-vaciar {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 20px 0;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-vaciar:hover {
+  background-color: #c0392b;
+}
+
+
+
+/* ======== TICKET ======== */
+
+#detalleTicket {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ticket-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  flex-wrap: wrap;
+}
+
+.ticket-item img {
+  width: 60px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.ticket-item span {
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  min-width: 120px;
+}
+
+#totalTicket {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+  margin-top: 20px;
+  padding: 0 16px;
+}
+
+#nombreUsuarioTicket {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  padding-left: 16px;
+}
+

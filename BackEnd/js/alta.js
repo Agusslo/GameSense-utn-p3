@@ -1,54 +1,66 @@
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("formAlta");
-    const nombreInput = document.getElementById("nombre");
-    const categoriaInput = document.getElementById("categoria");
-    const precioInput = document.getElementById("precio");
-    const imagenInput = document.getElementById("imagen");
     const preview = document.getElementById("previewImagen");
+    const inputImagen = document.getElementById("imagen");
 
-    const indexModificar = localStorage.getItem("modificarIndex");
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
+    const indexModificar = localStorage.getItem("modificarIndex");
 
-    imagenInput.addEventListener("input", () => {
-        const url = imagenInput.value.trim();
-        if (url) {
-            preview.src = url;
-            preview.style.display = "block";
-        } else {
-            preview.style.display = "none";
-        }
-    });
-
+    // Precargar datos si se está modificando
     if (indexModificar !== null) {
         const producto = productos[indexModificar];
         if (producto) {
-            nombreInput.value = producto.nombre;
-            categoriaInput.value = producto.categoria;
-            precioInput.value = producto.precio;
-            imagenInput.value = producto.imagen;
-            preview.src = producto.imagen;
-            preview.style.display = "block";
+        document.getElementById("nombre").value = producto.nombre;
+        document.getElementById("categoria").value = producto.categoria;
+        document.getElementById("precio").value = producto.precio;
+        document.getElementById("imagen").value = producto.imagen;
+        preview.src = producto.imagen;
+        preview.style.display = "block";
         }
     }
+
+    inputImagen.addEventListener("input", () => {
+        preview.src = inputImagen.value;
+        preview.style.display = inputImagen.value ? "block" : "none";
+    });
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
+        const nombre = document.getElementById("nombre").value;
+        const categoria = document.getElementById("categoria").value;
+        const precio = parseFloat(document.getElementById("precio").value);
+        const imagen = document.getElementById("imagen").value;
+
         const nuevoProducto = {
-            nombre: nombreInput.value.trim(),
-            categoria: categoriaInput.value.trim(),
-            precio: parseFloat(precioInput.value),
-            imagen: imagenInput.value.trim()
+        id: indexModificar !== null ? productos[indexModificar].id : Date.now(),
+        nombre,
+        categoria,
+        precio,
+        imagen
         };
 
+        // Modificar o agregar
         if (indexModificar !== null) {
-            productos[indexModificar] = nuevoProducto;
-            localStorage.removeItem("modificarIndex");
+        const productoViejo = productos[indexModificar];
+        productos[indexModificar] = nuevoProducto;
+
+        // actualizamos en el carrito si existe
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        carrito = carrito.map(prod =>
+            prod.id === productoViejo.id ? { ...prod, ...nuevoProducto } : prod
+        );
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
+        localStorage.removeItem("modificarIndex");
         } else {
-            productos.push(nuevoProducto);
+        productos.push(nuevoProducto);
         }
 
         localStorage.setItem("productos", JSON.stringify(productos));
+        alert("Producto guardado con éxito");
+        form.reset();
+        preview.style.display = "none";
         window.location.href = "dashboard.html";
     });
-});
+    });
