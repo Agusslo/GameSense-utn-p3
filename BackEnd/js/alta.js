@@ -1,14 +1,23 @@
-document.getElementById("formAlta").addEventListener("submit", function (e) {
+document.addEventListener("DOMContentLoaded", () => {
+const form = document.getElementById("formAlta");
+const inputImagen = document.getElementById("imagen");
+const preview = document.getElementById("previewImagen");
+
+inputImagen.addEventListener("input", () => {
+const url = inputImagen.value;
+preview.src = url;
+preview.style.display = url ? "block" : "none";
+});
+
+form.addEventListener("submit", (e) => {
 e.preventDefault();
 
 const nombre = document.getElementById("nombre").value.trim();
 const categoria = document.getElementById("categoria").value;
 const precio = parseFloat(document.getElementById("precio").value);
-const cantidad = parseInt(document.getElementById("cantidad").value);
 const imagen = document.getElementById("imagen").value.trim();
 
-
-if (!nombre || !categoria || isNaN(precio) || !imagen) {
+if (!nombre || !categoria || !precio || !imagen) {
     alert("Todos los campos son obligatorios.");
     return;
 }
@@ -18,14 +27,16 @@ const nuevoProducto = {
     nombre,
     categoria,
     precio,
-    cantidad,
-    imagen
+    imagen,
 };
 
-const productos = JSON.parse(localStorage.getItem("carrito")) || [];
-productos.push(nuevoProducto);
-localStorage.setItem("carrito", JSON.stringify(productos));
+const productosGuardados = JSON.parse(localStorage.getItem("productos")) || [];
+productosGuardados.push(nuevoProducto);
+localStorage.setItem("productos", JSON.stringify(productosGuardados));
 
-alert("✅ Producto cargado correctamente");
-document.getElementById("formAlta").reset();
+alert("Producto cargado correctamente.");
+form.reset();
+preview.src = "";
+preview.style.display = "none";
+});
 });
