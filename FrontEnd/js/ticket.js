@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-const usuario = localStorage.getItem("usuario") || "Cliente anónimo";
+const usuario = localStorage.getItem("nombreUsuario") || "Cliente anónimo";
 document.getElementById("nombreUsuarioTicket").textContent = "Cliente: " + usuario;
 
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
