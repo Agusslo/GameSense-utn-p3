@@ -17,6 +17,9 @@
 }
 
 .bienvenida {
+  animation: popupIn 0.7s ease-out forwards;
+  transform-origin: center;
+  opacity: 0;
   background-color: white;
   color: black;
   border-radius: 12px;
@@ -65,6 +68,29 @@
   z-index: -1;
 }
 
+/* ======== Keyframes ======== */
+
+@keyframes fadeInFromBlack {
+  0% {
+    background-color: black;
+    opacity: 0;
+  }
+  100% {
+    background-color: black;
+    opacity: 1;
+  }
+}
+
+@keyframes popupIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 /* ======== ESTILOS GENERALES ======== */
 
@@ -76,6 +102,10 @@ body {
   background-color: #ffffff;
   color: #111;
   overflow: hidden; /* para evitar scroll */
+}
+
+body.fade-in {
+  animation: fadeInFromBlack 1.5s ease-out forwards;
 }
 
 h1, h2, h3 {
