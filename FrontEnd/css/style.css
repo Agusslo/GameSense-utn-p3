@@ -17,7 +17,7 @@
 }
 
 .bienvenida {
-  animation: popupIn 0.7s ease-out forwards;
+  animation: popupIn 1.2s ease-out forwards;
   transform-origin: center;
   opacity: 0;
   background-color: white;
@@ -105,7 +105,7 @@ body {
 }
 
 body.fade-in {
-  animation: fadeInFromBlack 1.5s ease-out forwards;
+  animation: fadeInFromBlack 2s ease-out forwards;
 }
 
 h1, h2, h3 {
