@@ -1,51 +1,81 @@
 /* ======== INDEX - PANTALLA DE BIENVENIDA ======== */
 
-.bienvenida {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 30px;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fafafa;
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  gap: 15vh;
 }
 
+.overlay h1 {
+  font-size: calc(2rem + 2vw);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.bienvenida {
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  padding: 1rem;
+  font-size: calc(1rem + 0.8vw); /* escala */
+  text-align: center;
+}
+
+
 .bienvenida h2 {
-  margin-bottom: 15px;
+  font-size: calc(1rem + 1.2vw); /* escala */
+  margin-bottom: 10px;
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
 .bienvenida input {
-  padding: 8px;
-  width: 100%;
-  margin-bottom: 15px;
+  width: 80%;
+  margin-top: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 14px;
 }
 
+
 .bienvenida button {
-  padding: 8px 20px;
-  background-color: #333;
+  margin-top: 2rem;
+  background-color: #222;
   color: white;
-  border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
+  padding: .5rem calc(3rem + 1vw); /* más grande y escalable */
 }
 
 .bienvenida button:hover {
-  background-color: #000;
+  background-color: #444;
 }
 
+.video-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
 
 
 /* ======== ESTILOS GENERALES ======== */
 
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
   background-color: #ffffff;
   color: #111;
+  overflow: hidden; /* para evitar scroll */
 }
 
 h1, h2, h3 {
@@ -64,7 +94,10 @@ nav a:hover {
 }
 
 main {
-  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
