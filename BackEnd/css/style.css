@@ -52,6 +52,75 @@
     margin: 6px 4px;
     }
 
+    /* --- DASHBOARD: MODAL--- */
+    .modal {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(30, 41, 59, 0.7); /* azul oscuro translúcido */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        backdrop-filter: blur(4px);
+    }
+
+    .modal-contenido {
+        background: #fff;
+        padding: 32px 40px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(30,41,59,0.18), 0 1.5px 4px rgba(0,0,0,0.08);
+        min-width: 320px;
+        max-width: 90vw;
+        animation: modalFadeIn 0.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    @keyframes modalFadeIn {
+        from { transform: translateY(40px) scale(0.96); opacity: 0; }
+        to   { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .modal-contenido h2,
+    .modal-contenido p {
+        margin-bottom: 18px;
+        color: #1e293b;
+    }
+
+    .modal-botones {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 10px;
+    }
+
+    .modal-botones button {
+        padding: 10px 28px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        font-size: 1rem;
+        background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(56,189,248,0.08);
+        cursor: pointer;
+        transition: background 0.2s, transform 0.15s;
+    }
+
+    .modal-botones button:hover {
+        background: linear-gradient(90deg, #1e40af 0%, #0ea5e9 100%);
+        transform: translateY(-2px) scale(1.04);
+    }
+
+        /* --- DASHBOARD: IMAGEN--- */
+    img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+    }
+
+
     /* --- ADMIN: ALTA PRODUCTO --- */
     form#formAlta {
     max-width: 500px;
@@ -103,13 +172,7 @@
     }
 
 
-    /* --- DASHBOARD: IMAGEN--- */
-    img {
-    max-width: 150px;
-    height: auto;
-    display: block;
-    margin-bottom: 10px;
-    }
+
 
 
 

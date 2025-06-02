@@ -25,7 +25,7 @@ function mostrarProductos() {
     const auricularesDiv = document.getElementById("categoria-auriculares");
     const tecladosDiv = document.getElementById("categoria-teclados");
 
-    const productos = obtenerTodosLosProductos();
+    const productos = obtenerTodosLosProductos().filter(p => p.activo !== false);
 
     if (productos.length === 0) {
         auricularesDiv.innerHTML = "<p>No hay productos disponibles.</p>";
