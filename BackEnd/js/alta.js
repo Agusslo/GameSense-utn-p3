@@ -45,8 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
             categoria,
             precio,
             imagen,
-            activo: true // por defecto
+            activo: indexModificar !== null ? productos[indexModificar].activo : true
         };
+
 
         if (indexModificar !== null) {
             const productoViejo = productos[indexModificar];
