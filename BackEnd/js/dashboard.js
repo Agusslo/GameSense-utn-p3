@@ -39,6 +39,14 @@ function mostrarDashboard() {
     });
 }
 
+//* MODIFICAR PRODUCTO
+function modificarProducto(index) {
+    localStorage.setItem("modificarIndex", index);
+    window.location.href = "alta.html";
+}
+
+
+
 //* MOSTRAR MODAL DE ELIMINACIÓN
 function mostrarModal(index) {
     productoAEliminarIndex = index;
@@ -76,12 +84,6 @@ function eliminarProductoConfirmado() {
 function cerrarModal() {
     document.getElementById("modalConfirmacion").style.display = "none";
     productoAEliminarIndex = null;
-}
-
-//* MODIFICAR PRODUCTO
-function modificarProducto(index) {
-    localStorage.setItem("modificarIndex", index);
-    window.location.href = "alta.html";
 }
 
 //* MOSTRAR MODAL DE ACTIVACIÓN
