@@ -174,11 +174,24 @@ main {
 
 
 /* ======== PRODUCTOS ======== */
+.productos {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
 
+}
 .grid-productos {
+  color: black;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
+  background-color: black;
 }
 
 .card-producto {
@@ -211,6 +224,9 @@ main {
   font-size: 14px;
   cursor: pointer;
 }
+
+
+
 .hero {
   background-color: black;
   min-height: 60vh;
@@ -222,12 +238,17 @@ main {
   color: white;
 }
 
+.hero h1, .hero h2 , .hero p {
+  animation: popupIn 1.2s ease-out forwards;
+}
 /* Mostrar el lado izquierdo de la imagen en móvil */
 @media (max-width: 768px) {
   .hero {
     background-position: 10% center;
   }
 }
+
+
 
 /* ======== CARRITO ======== */
 
