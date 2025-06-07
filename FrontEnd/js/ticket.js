@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 const usuario = localStorage.getItem("nombreUsuario") || "Cliente anónimo";
-document.getElementById("nombreUsuarioTicket").textContent = "Cliente: " + usuario;
+document.getElementById("nombreUsuarioTicket").innerHTML = "Cliente: <span>" + usuario + "</span>";
 
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const detalle = document.getElementById("detalleTicket");
