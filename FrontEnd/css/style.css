@@ -97,6 +97,13 @@
   }
 }
 
+@keyframes saltito {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-10px); }
+  60% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
 /* ======== ESTILOS GENERALES ======== */
 
 header {
@@ -195,11 +202,13 @@ main {
 }
 
 .card-producto {
-  border: 1px solid #ddd;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  background-color: #f9f9f9;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+  transform: translateY(0);
 }
 
 .card-producto img {
@@ -220,11 +229,41 @@ main {
 }
 
 .card-producto button {
+  color: black;
   padding: 6px 10px;
   font-size: 14px;
   cursor: pointer;
 }
 
+.card-producto:hover {
+  background-color: #333;
+  box-shadow: 0 8px 20px rgba(0, 255, 100, 0.3);
+  transform: translateY(-4px);
+  cursor: default;
+}
+
+.card-producto button {
+  background-color: transparent;
+  color: #00ff66; /* Verde llamativo */
+  border: 1px solid #00ff66;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.card-producto button:hover {
+  background-color: #0f0;
+  color: black;
+  cursor: pointer;
+}
+
+.card-producto.clicked {
+  background-color: #1a1a1a !important;
+  box-shadow: none !important;
+  animation: saltito 0.3s ease;
+}
 
 
 .hero {
@@ -247,6 +286,7 @@ main {
     background-position: 10% center;
   }
 }
+
 
 
 

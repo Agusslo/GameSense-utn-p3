@@ -42,24 +42,27 @@ function mostrarProductos() {
         const card = document.createElement("div");
         card.className = "card-producto";
         card.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>Precio: $${producto.precio}</p>
-            <button class="btn-agregar">Agregar al carrito</button>
+            <img src="${producto.imagen}" class= "card-img-top" alt="${producto.nombre}">
+            <div class="card-body text-center">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">Precio: $${producto.precio}</p>
+                <button class="btn-outline-primary btn-agregar">Agregar al carrito</button>
+            </div>
         `;
         card.querySelector(".btn-agregar").addEventListener("click", () => agregarAlCarrito(producto));
+
 
         // Card para carrusel
         const carouselItem = document.createElement("div"); // Creo item para carrusel
         carouselItem.className = `carousel-item ${(producto.categoria === "auriculares" && indexAur === 0) || 
                                                   (producto.categoria === "teclados" && indexTec === 0) ? 'active' : ''}`; // con el active muestra primero el primer item de productos
         carouselItem.innerHTML = `
-            <div class="card mx-auto" style="width: 18rem;">
+            <div class="mx-auto card-producto" style="width: 18rem;">
                 <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
                     <p class="card-text">Precio: $${producto.precio}</p>
-                    <button class="btn btn-primary btn-agregar">Agregar al carrito</button>
+                    <button class="btn-outline-primary btn-agregar">Agregar al carrito</button>
                 </div>
             </div>
         `;
@@ -75,4 +78,22 @@ function mostrarProductos() {
             indexTec++;
         }
     });
+
+    document.querySelectorAll('.card-producto button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const card = btn.closest('.card-producto'); 
+            card.classList.add('clicked');
+            setTimeout(() => {
+                card.classList.remove('clicked');
+            }, 300); // Remuevo la clase ya que si no el estilo de clicked queda activo, el efecto dura 300ms
+        });
+    });
+
+    VanillaTilt.init(document.querySelectorAll(".card-producto"), {
+    max: 10,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+    });
 }
+
