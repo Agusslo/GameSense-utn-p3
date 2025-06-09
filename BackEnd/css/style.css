@@ -70,6 +70,56 @@
         text-transform: uppercase;
 }
 
+#lista-productos section {
+    margin-bottom: 40px;
+}
+
+#lista-productos section h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #1f2937;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+
+.seccion-categoria {
+    margin-bottom: 40px;
+}
+
+.seccion-categoria h3 {
+    font-size: 24px;
+    color: #111;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.grilla-categoria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
+.card-producto {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card-producto img {
+    max-width: 100%;
+    height: 140px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+
+
 
     /* --- DASHBOARD: MODAL ELIMINACION--- */
     .modal {

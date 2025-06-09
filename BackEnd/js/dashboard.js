@@ -16,28 +16,50 @@ function mostrarDashboard() {
 
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
 
-    productos.forEach((producto, index) => {
-        const card = document.createElement("div");
-        card.className = "card-producto";
+    const categorias = ["auriculares", "teclados"];
 
-        const esInactivo = producto.activo === false;
+    categorias.forEach(categoria => {
+        const productosCategoria = productos.filter(p => p.categoria === categoria);
+        if (productosCategoria.length > 0) {
+            const seccion = document.createElement("section");
+            seccion.className = "seccion-categoria";
 
-        card.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre} ${esInactivo ? "(Inactivo)" : ""}</h3>
-            <p>Categoría: ${producto.categoria}</p>
-            <p>Precio: $${producto.precio}</p>
-            <button onclick="modificarProducto(${index})" ${esInactivo ? "disabled" : ""}>Modificar</button>
-            <button onclick="mostrarModal(${index})" ${esInactivo ? "disabled" : ""}>Eliminar</button>
-            ${esInactivo
-                ? `<button onclick="mostrarModalActivar(${index})">Activar</button>`
-                : ""
-            }
-        `;
+            const titulo = document.createElement("h3");
+            titulo.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
+            seccion.appendChild(titulo);
 
-        contenedor.appendChild(card);
+            const grilla = document.createElement("div");
+            grilla.className = "grilla-categoria";
+
+            productosCategoria.forEach(prod => {
+                grilla.appendChild(crearCardProducto(prod, productos.indexOf(prod)));
+            });
+
+            seccion.appendChild(grilla);
+            contenedor.appendChild(seccion);
+        }
     });
 }
+
+function crearCardProducto(producto, index) {
+    const card = document.createElement("div");
+    card.className = "card-producto";
+
+    const esInactivo = producto.activo === false;
+
+    card.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <h3>${producto.nombre} ${esInactivo ? "(Inactivo)" : ""}</h3>
+        <p>Categoría: ${producto.categoria}</p>
+        <p>Precio: $${producto.precio}</p>
+        <button onclick="modificarProducto(${index})" ${esInactivo ? "disabled" : ""}>Modificar</button>
+        <button onclick="mostrarModal(${index})" ${esInactivo ? "disabled" : ""}>Eliminar</button>
+        ${esInactivo ? `<button onclick="mostrarModalActivar(${index})">Activar</button>` : ""}
+    `;
+
+    return card;
+}
+
 
 //* MODIFICAR PRODUCTO
 function modificarProducto(index) {
