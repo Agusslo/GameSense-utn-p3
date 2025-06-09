@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard - Milei Adorni Tech</title>
+<link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+<header>
+<h1>Milei Adorni Tech</h1>
+<nav>
+    <a href="alta.html">Alta</a>
+</nav>
+</header>
+
+<main>
+<h2>Panel de productos</h2>
+<div id="lista-productos" class="grid-productos"></div>
+</main>
+
+<!-- Modal de confirmación de eliminación -->
+<div id="modalConfirmacion" class="modal" style="display: none;">
+    <div class="modal-contenido">
+    <p id="mensajeConfirmacion">¿Estás seguro/a de que querés eliminar este producto?</p>
+    <div class="modal-botones">
+        <button id="btnCancelar">Cancelar</button>
+        <button id="btnConfirmar">Eliminar</button>
+    </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación de activación -->
+<div id="modalActivar" class="modal" style="display: none;">
+    <div class="modal-contenido">
+    <p id="textModalActivar">¿Seguro que querés activar este producto?</p>
+    <div class="modal-botones">
+        <button id="cancelarActivar">Cancelar</button>
+        <button id="confirmarActivar">Confirmar</button>
+    </div>
+    </div>
+</div>
+
+
+<script src="./js/dashboard.js"></script>
+</body>
+</html>

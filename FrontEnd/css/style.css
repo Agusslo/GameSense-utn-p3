@@ -1,0 +1,451 @@
+/* ======== INDEX - PANTALLA DE BIENVENIDA ======== */
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+  gap: 15vh;
+}
+
+
+.bienvenida {
+  animation: popupIn 1.2s ease-out forwards;
+  transform-origin: center;
+  opacity: 0;
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  padding: 1rem;
+  font-size: calc(1rem + 0.8vw); /* escala */
+  text-align: center;
+}
+
+
+.bienvenida h2 {
+  font-size: calc(1rem + 1.2vw); /* escala */
+  margin-bottom: 10px;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.bienvenida input {
+  width: 80%;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
+.bienvenida button {
+  margin-top: 2rem;
+  background-color: #222;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: .5rem calc(3rem + 1vw); /* más grande y escalable */
+}
+
+.bienvenida button:hover {
+  background-color: #444;
+}
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* por detrás del contenido */
+  overflow: hidden;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35); 
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ======== Keyframes ======== */
+
+@keyframes fadeInFromBlack {
+  0% {
+    background-color: black;
+    opacity: 0;
+  }
+  100% {
+    background-color: black;
+    opacity: 1;
+  }
+}
+
+@keyframes popupIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes saltito {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-10px); }
+  60% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
+/* ======== ESTILOS GENERALES ======== */
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000; /* Asegura que el header esté por encima del contenido */
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: black;
+  color: #111;
+}
+
+body.fade-in {
+  animation: fadeInFromBlack 2s ease-out forwards;
+}
+
+.logo-img {
+  height: 30px;  /* Ajustable según tu diseño */
+  width: auto;
+  max-width: 100%;
+
+}
+.gamesense {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 4rem;
+    text-shadow: 5px 5px 30px rgba(0, 0, 0, 1);
+    font-weight: 300;
+    text-decoration: none;
+    margin-top: 0px;
+}
+
+.gamesense .white {
+  color: white;
+  text-decoration: none;
+}
+
+.gamesense .green {
+  color: #7AC943;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  margin-bottom: 10px;
+}
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+<<<<<<< HEAD
+  margin-top: 60px;
+=======
+  height: 100%;
+  overflow:auto;
+>>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
+  align-items: center;
+  justify-content: center;
+}
+
+.header-spacer {
+  height: 60px;
+}
+
+/* ======== PRODUCTOS ======== */
+.productos {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+
+}
+.grid-productos {
+  color: black;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  background-color: black;
+}
+
+.card-producto {
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+  transform: translateY(0);
+}
+
+.card-producto img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.card-producto h3 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.card-producto p {
+  margin: 5px 0;
+}
+
+.card-producto button {
+  color: black;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.hero {
+  background-color: black;
+  min-height: 60vh;
+  background-image: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .6)), url('../img/hero-cat-headsets-desktop.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+}
+
+<<<<<<< HEAD
+=======
+.card-producto:hover {
+  background-color: #333;
+  box-shadow: 0 8px 20px rgba(0, 255, 100, 0.3);
+  transform: translateY(-4px);
+  cursor: default;
+}
+
+.card-producto button {
+  background-color: transparent;
+  color: #00ff66;
+  border: 1px solid #00ff66;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.card-producto button:hover {
+  background-color: #0f0;
+  color: black;
+  cursor: pointer;
+}
+
+.card-producto.clicked {
+  background-color: #1a1a1a !important;
+  box-shadow: none !important;
+  animation: saltito 0.3s ease;
+}
+
+
+.hero {
+  background-color: black;
+  min-height: 60vh;
+  background-image: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .6)), url('../img/hero-cat-headsets-desktop.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+}
+
+.hero h1, .hero h2 , .hero p {
+  animation: popupIn 1.2s ease-out forwards;
+}
+>>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
+/* Mostrar el lado izquierdo de la imagen en móvil */
+@media (max-width: 768px) {
+  .hero {
+    background-position: 10% center;
+  }
+}
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
+
+/* ======== CARRITO ======== */
+
+.carrito {
+  background-color: black;
+  color: white;
+  text-align: center;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 1rem 0; 
+  flex: 1;
+  box-sizing: border-box;
+  overflow: hidden; 
+}
+
+#carrito-contenedor {
+  background-color: black;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto; /* scroll interno si se llena */
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.card-producto .cantidad-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-producto .cantidad-controls button {
+  padding: 4px 8px;
+  font-size: 16px;
+}
+
+.card-producto span {
+  min-width: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-vaciar {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 20px 0;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  
+}
+
+.btn-vaciar:hover {
+  background-color: #c0392b;
+}
+
+
+
+/* ======== TICKET ======== */
+.ticket {
+  background-color: black;
+  color: white;
+  text-align: center;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}	
+#detalleTicket {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ticket-item {
+  
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  flex-wrap: wrap;
+}
+
+.ticket-item img {
+  width: 60px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.ticket-item span {
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  min-width: 120px;
+}
+
+#totalTicket {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+  margin-top: 20px;
+  padding: 0 16px;
+}
+
+#nombreUsuarioTicket {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+  color: white;
+  padding-left: 16px;
+}
+#nombreUsuarioTicket span {
+  color: #00ff66;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alta - Milei Adorni Tech</title>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <header>
+    <h1>Alta de Producto</h1>
+    <nav>
+        <a href="dashboard.html">Volver al Dashboard</a>
+    </nav>
+    </header>
+
+    <main>
+    <section>
+        <br>
+        <form id="formAlta">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required />
+        </div>
+
+        <div>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" required>
+            <option value="auriculares">Auriculares</option>
+            <option value="teclados">Teclados</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" required />
+        </div>
+
+        <div>
+            <label for="imagenArchivo">Seleccionar imagen (JPG o PNG):</label>
+            <input type="file" id="imagenArchivo" accept=".jpg, .jpeg, .png" required />
+        </div>
+
+        <div style="margin-top: 10px;">
+            <p>Vista previa de la imagen:</p>
+            <img id="previewImagen" src="" alt="Previsualización" width="200" style="display: none; border: 1px solid #ccc;" />
+        </div>
+
+        <button type="submit">Cargar producto</button>
+        </form>
+    </section>
+    </main>
+
+    <script src="./js/alta.js"></script>
+</body>
+</html>
