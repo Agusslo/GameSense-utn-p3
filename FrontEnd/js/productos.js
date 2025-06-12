@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
     if (!localStorage.getItem("nombreUsuario")) {
         window.location.href = "index.html";
@@ -11,11 +12,19 @@ let productosPorPagina = 5;
 let paginaActualAuriculares = 1;
 let paginaActualTeclados = 1;
 let productosFiltrados = [];
+=======
+document.addEventListener("DOMContentLoaded", mostrarProductos);
+
+if (!localStorage.getItem("nombreUsuario")) {
+    window.location.href = "index.html"; 
+}
+>>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
 
 function obtenerTodosLosProductos() {
     return JSON.parse(localStorage.getItem("productos")) || [];
 }
 
+<<<<<<< HEAD
 function inicializarPaginacion() {
     productosFiltrados = obtenerTodosLosProductos().filter(p => p.activo !== false);
     mostrarCategoria("auriculares", paginaActualAuriculares);
@@ -109,6 +118,8 @@ function agregarControlesPaginacion(contenedor, categoria, paginaActual, totalPa
 }
 
 
+=======
+>>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
 function agregarAlCarrito(producto) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     const productoExistente = carrito.find(p => p.id === producto.id);

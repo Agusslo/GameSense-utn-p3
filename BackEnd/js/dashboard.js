@@ -57,7 +57,6 @@ function crearCardProducto(producto, index) {
     return card;
 }
 
-
 //* MODIFICAR PRODUCTO
 function modificarProducto(index) {
     localStorage.setItem("modificarIndex", index);

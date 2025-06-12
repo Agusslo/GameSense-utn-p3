@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
     const indexModificar = localStorage.getItem("modificarIndex");
 
+
+    // Precargar datos si se está modificando (ignorado si se usa solo para alta)
     if (indexModificar !== null) {
         const producto = productos[indexModificar];
         if (producto) {
