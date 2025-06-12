@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("productos", JSON.stringify(productos));
 
             //SweetAlert2
+            
             Swal.fire({
                 title: "¡Producto guardado con éxito!",
                 icon: "success",

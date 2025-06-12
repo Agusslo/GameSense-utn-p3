@@ -13,11 +13,8 @@ let productoAActivarIndex = null;
 function mostrarDashboard() {
     const contenedor = document.getElementById("lista-productos");
     contenedor.innerHTML = "";
-
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
-
     const categorias = ["auriculares", "teclados"];
-
     categorias.forEach(categoria => {
         const productosCategoria = productos.filter(p => p.categoria === categoria);
         if (productosCategoria.length > 0) {
