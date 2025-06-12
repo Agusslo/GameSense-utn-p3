@@ -174,17 +174,9 @@ nav a:hover {
 }
 
 main {
-<<<<<<< HEAD
-<<<<<<< HEAD
   margin-top: 60px;
-=======
   height: 100%;
   overflow:auto;
->>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
-=======
-  height: 100%;
-  overflow:auto;
->>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
   align-items: center;
   justify-content: center;
 }
@@ -247,7 +239,7 @@ main {
   font-size: 14px;
   cursor: pointer;
 }
-<<<<<<< HEAD
+
 .hero {
   background-color: black;
   min-height: 60vh;
@@ -259,11 +251,6 @@ main {
   color: white;
 }
 
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
 .card-producto:hover {
   background-color: #333;
   box-shadow: 0 8px 20px rgba(0, 255, 100, 0.3);
@@ -295,42 +282,17 @@ main {
 }
 
 
-.hero {
-  background-color: black;
-  min-height: 60vh;
-  background-image: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .6)), url('../img/hero-cat-headsets-desktop.avif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  color: white;
-}
 
 .hero h1, .hero h2 , .hero p {
   animation: popupIn 1.2s ease-out forwards;
 }
-<<<<<<< HEAD
->>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
-=======
->>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
 /* Mostrar el lado izquierdo de la imagen en móvil */
 @media (max-width: 768px) {
   .hero {
     background-position: 10% center;
   }
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
-=======
-
-
-
->>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
 
 /* ======== CARRITO ======== */
 

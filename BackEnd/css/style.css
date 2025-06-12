@@ -70,19 +70,6 @@
         text-transform: uppercase;
 }
 
-<<<<<<< HEAD
-#lista-productos section {
-    margin-bottom: 40px;
-}
-
-#lista-productos section h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
-    color: #1f2937;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-}
-
 
 .seccion-categoria {
     margin-bottom: 40px;
@@ -119,10 +106,6 @@
     margin-bottom: 10px;
 }
 
-
-
-=======
->>>>>>> b09f83c256d61706e279c9c909b8505f283a3983
 
     /* --- DASHBOARD: MODAL ELIMINACION--- */
     .modal {
