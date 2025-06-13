@@ -104,6 +104,17 @@
   100% { transform: translateY(0); }
 }
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
 /* ======== ESTILOS GENERALES ======== */
 
 header {
@@ -174,7 +185,6 @@ nav a:hover {
 }
 
 main {
-  margin-top: 60px;
   height: 100%;
   overflow:auto;
   align-items: center;
@@ -240,17 +250,6 @@ main {
   cursor: pointer;
 }
 
-.hero {
-  background-color: black;
-  min-height: 60vh;
-  background-image: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .6)), url('../img/hero-cat-headsets-desktop.avif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  color: white;
-}
-
 .card-producto:hover {
   background-color: #333;
   box-shadow: 0 8px 20px rgba(0, 255, 100, 0.3);
@@ -282,6 +281,16 @@ main {
 }
 
 
+.hero {
+  background-color: black;
+  min-height: 60vh;
+  background-image: linear-gradient(rgba(0, 0, 0, .75), rgba(0, 0, 0, .6)), url('../img/hero-cat-headsets-desktop.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+}
 
 .hero h1, .hero h2 , .hero p {
   animation: popupIn 1.2s ease-out forwards;
@@ -292,6 +301,8 @@ main {
     background-position: 10% center;
   }
 }
+
+
 
 
 /* ======== CARRITO ======== */
@@ -428,4 +439,37 @@ main {
 }
 #nombreUsuarioTicket span {
   color: #00ff66;
+}
+
+/* ======== CONFIG MODAL ======== */
+
+.config-modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.config-content {
+  background-color: #1a1a1a;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  box-shadow: 0 0 15px #000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.close-config {
+  color: white;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
 }
