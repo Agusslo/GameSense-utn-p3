@@ -1,0 +1,60 @@
+.productos {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+
+}
+.grid-productos {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+  color: black;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 20px;
+  background-color: black;
+}
+
+
+.hero {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+  background-color: black;
+  min-height: 60vh;
+  background-image: linear-gradient(rgba(35, 35, 35, 0.3), rgba(0, 0, 0, .9)), url('../img/hero-cat-headsets-desktop.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+}
+
+.hero h1, .hero h2 , .hero p {
+  animation: popupIn 1.2s ease-out forwards;
+}
+/* Mostrar el lado izquierdo de la imagen en móvil */
+@media (max-width: 768px) {
+  .hero {
+    background-position: 10% center;
+  }
+}
+
+
+/* ======== Light ======== */
+
+
+body.theme-light .hero {
+    background-color: white;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, .3)), url('../img/hero-cat-headsets-desktop.avif');
+    color: black !important;
+}
+
+
+body.theme-light .hero h1,
+body.theme-light .hero p{
+  color: black !important;
+}

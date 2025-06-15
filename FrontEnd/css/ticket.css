@@ -1,0 +1,91 @@
+.ticket {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+  background-color: black;
+  color: white;
+  text-align: center;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem;
+}	
+#detalleTicket {
+  background-color: #1a1a1a;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ticket-item {
+  background-color: #333;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  flex-wrap: wrap;
+}
+
+.ticket-item img {
+  width: 60px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.ticket-item span {
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  color: white;
+  min-width: 120px;
+}
+
+#totalTicket {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+  margin-top: 20px;
+  padding: 0 16px;
+}
+
+#nombreUsuarioTicket {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+  color: white;
+  padding-left: 16px;
+}
+#nombreUsuarioTicket span {
+  color: #00ff66;
+}
+
+/* ======== Light ======== */
+
+.theme-light .ticket {
+  background-color: white;
+  color: black;
+}
+.theme-light #nombreUsuarioTicket {
+  color: black;
+}
+.theme-light #detalleTicket {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.theme-light .ticket-item {
+  background-color: #e0e0e0;
+  color: black;
+}
+.theme-light .ticket-item span {
+  color: black;
+}

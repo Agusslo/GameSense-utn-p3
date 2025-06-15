@@ -1,0 +1,74 @@
+.carrito {
+  background-color: black;
+  color: white;
+  text-align: center;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 1rem 0; 
+  flex: 1;
+  box-sizing: border-box;
+  overflow: hidden; 
+}
+
+#carrito-contenedor {
+  background-color: black;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto; /* scroll interno si se llena */
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.card-producto .cantidad-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-producto .cantidad-controls button {
+  padding: 4px 8px;
+  font-size: 16px;
+}
+
+.card-producto span {
+  min-width: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-vaciar {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 20px auto;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease; 
+}
+
+.btn-vaciar:hover {
+  background-color: #c0392b;
+}
+
+
+/* ======== Light ======== */
+
+body.theme-light .carrito,
+body.theme-light #carrito-contenedor {
+  background-color: #f5f5f5;
+  color: black;
+}
+
+

@@ -1,0 +1,73 @@
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+  gap: 15vh;
+}
+
+
+.bienvenida {
+  animation: popupIn 1.2s ease-out forwards;
+  transform-origin: center;
+  opacity: 0;
+  background-color: white;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  padding: 1rem;
+  font-size: calc(1rem + 0.8vw); /* escala */
+  text-align: center;
+}
+
+
+.bienvenida h2 {
+  font-size: calc(1rem + 1.2vw); /* escala */
+  margin-bottom: 10px;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.bienvenida input {
+  width: 80%;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
+.bienvenida button {
+  margin-top: 2rem;
+  background-color: #222;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: .5rem calc(3rem + 1vw); /* más grande y escalable */
+}
+
+.bienvenida button:hover {
+  background-color: #444;
+}
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* por detrás del contenido */
+  overflow: hidden;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35); 
+  z-index: 1;
+  pointer-events: none;
+}
