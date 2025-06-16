@@ -67,7 +67,7 @@
 #nombreUsuarioTicket span {
   color: #00ff66;
 }
-.ticket-modal {
+.ticket-modal, .conf-modal {
   display: none;
   position: fixed;
   z-index: 9999;
@@ -81,7 +81,7 @@
   padding: 1rem;
 }
 
-.ticket-content {
+.ticket-content, .conf-content {
   background-color: #222;
   color: white;
   padding: 1.5rem ;
@@ -93,7 +93,7 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   animation: popupIn 0.5s ease-out forwards;
 }
-.close-ticket {
+.close-ticket, .close-conf {
   position: absolute;
   top: .5rem;
   right: .3rem;      
@@ -106,7 +106,7 @@
   cursor: pointer;
 }
 
-.close-ticket:hover {
+.close-ticket:hover, .close-conf:hover {
   background: #666;
 }
 
@@ -132,7 +132,9 @@
 
 .btn-total,
 .btn-imprimir,
-.btn-pdf {
+.btn-pdf,
+.btn-conf-ok,
+.btn-conf-cancel{
   position: relative;
   overflow: hidden;
   border: none;
@@ -140,15 +142,16 @@
 }
 
 .btn-total,
-.btn-imprimir {
+.btn-imprimir,
+.btn-conf-ok {
   background-color: #00c853;
   color: white;
-  padding: 12px 20px;
+  padding: 12px 20px; 
   border-radius: 8px;
   font-size: 1rem;
 }
 
-.btn-pdf {
+.btn-pdf, .btn-conf-cancel{
   background-color: transparent;
   color: white;
   text-decoration: underline;

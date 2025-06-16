@@ -32,19 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const totalBtn = document.getElementById("btn-total");
   const modal = document.getElementById("ticketModal");
+  const modalConf = document.getElementById("confModal");
   const closeBtn = document.querySelector(".close-ticket");
   const PDFBtn = document.getElementById("btn-pdf");
   const ImprimirBtn = document.getElementById("btn-imprimir");
+  const btnConfOk = document.getElementById("btn-conf-ok");
+  const btnConfCancelar = document.getElementById("btn-conf-cancel");
 
   totalBtn.addEventListener("click", function () {
     totalBtn.classList.add("loading");
     setTimeout(() => {
       totalBtn.classList.remove("loading");
       totalBtn.textContent = "✅";
-      modal.style.display = "flex";
-      document.getElementById("modalNombre").textContent = usuario;
-      document.getElementById("modalTotal").textContent = totalTexto.textContent;
-
+      modalConf.style.display = "flex";
+      btnConfOk.addEventListener("click", function () {
+          modalConf.style.display = "none";
+            
+          document.getElementById("modalNombre").textContent = usuario;
+          document.getElementById("modalTotal").textContent = totalTexto.textContent;
+          modal.style.display = "flex";
+      });
+      btnConfCancelar.addEventListener("click", function () {
+        modalConf.style.display = "none";
+      });
       setTimeout(() => {
         totalBtn.textContent = "Finalizar compra";
       }, 2000);
