@@ -67,7 +67,7 @@
 #nombreUsuarioTicket span {
   color: #00ff66;
 }
-.ticket-modal, .conf-modal {
+.ticket-modal, .conf-modal, .mostrar-modal{
   display: none;
   position: fixed;
   z-index: 9999;
@@ -134,7 +134,9 @@
 .btn-imprimir,
 .btn-pdf,
 .btn-conf-ok,
-.btn-conf-cancel{
+.btn-conf-cancel,
+.btn-mostrar,
+.btn-mostrar-close{
   position: relative;
   overflow: hidden;
   border: none;
@@ -151,7 +153,7 @@
   font-size: 1rem;
 }
 
-.btn-pdf, .btn-conf-cancel{
+.btn-pdf, .btn-conf-cancel, .btn-mostrar, .btn-mostrar-close{
   background-color: transparent;
   color: white;
   text-decoration: underline;

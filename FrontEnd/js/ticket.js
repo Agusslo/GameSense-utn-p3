@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const ImprimirBtn = document.getElementById("btn-imprimir");
   const btnConfOk = document.getElementById("btn-conf-ok");
   const btnConfCancelar = document.getElementById("btn-conf-cancel");
+  const btnMostrar = document.getElementById("btn-mostrar");
+  const modalMostrar = document.getElementById("modalMostrarPDF");
+  const btnMostrarClose = document.getElementById("btn-mostrar-close");
+  const canvas = document.getElementById("pdfCanvas");
 
   totalBtn.addEventListener("click", function () {
     totalBtn.classList.add("loading");
@@ -91,6 +95,36 @@ document.addEventListener("DOMContentLoaded", () => {
     doc.save('ticket_compra.pdf');
   });
 
+
+  btnMostrar.addEventListener("click", async () => {
+    const doc = generarPDF();
+    const pdfBlob = doc.output("blob");
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+
+    const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+    const page = await pdf.getPage(1);
+
+    const context = canvas.getContext("2d");
+    const viewport = page.getViewport({ scale: 1.5 });
+
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+
+    const renderContext = {
+      canvasContext: context,
+      viewport: viewport
+    };
+
+    await page.render(renderContext).promise;
+
+    modalMostrar.style.display = "flex";
+
+    btnMostrarClose.onclick = () => {
+      modalMostrar.style.display = "none";
+      URL.revokeObjectURL(pdfUrl);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    };
+  });
     // Imprimir el PDF y luego redirigir
   ImprimirBtn.addEventListener("click", function () {
     const doc = generarPDF();
