@@ -18,10 +18,27 @@
     <p id="nombreUsuarioTicket"></p>
     <div id="detalleTicket" class="ticket-detalle"></div>
     <p id="totalTicket" class="ticket-total"></p>
+    <button id="btn-total" class="btn-total">Finalizar compra</button>
 </main>
+
+<!-- Modal -->
+
+<div id="ticketModal" class="ticket-modal">
+  <div class="ticket-content">
+    <span class="close-ticket">&times;</span>
+    <h2>✅ Compra Confirmada</h2>
+    <p>Gracias por tu compra, <span id="modalNombre"></span>.</p>
+    <p><strong><span id="modalTotal"></span></strong></p>
+    <button id="btn-imprimir" class="btn-imprimir">Imprimir ticket y finalizar</button>
+    <button id="btn-pdf" class="btn-pdf">Descargar PDF</button>
+  </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="./js/ticket.js"></script>
 <script src=".\js\includeHeader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </body>
 </html>
