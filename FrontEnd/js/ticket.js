@@ -36,21 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const PDFBtn = document.getElementById("btn-pdf");
   const ImprimirBtn = document.getElementById("btn-imprimir");
 
-
-
   totalBtn.addEventListener("click", function () {
     totalBtn.classList.add("loading");
+    setTimeout(() => {
+      totalBtn.classList.remove("loading");
+      totalBtn.textContent = "✅";
+      modal.style.display = "flex";
+      document.getElementById("modalNombre").textContent = usuario;
+      document.getElementById("modalTotal").textContent = totalTexto.textContent;
 
-  // Esperar a que termine la animación (2s) y mostrar modal
-  setTimeout(() => {
-    totalBtn.classList.remove("loading");
-
-    // Mostrar modal
-    modal.style.display = "flex";
-    document.getElementById("modalNombre").textContent = usuario;
-    document.getElementById("modalTotal").textContent = totalTexto.textContent;
-
-  }, 2000);
+      setTimeout(() => {
+        totalBtn.textContent = "Finalizar compra";
+      }, 2000);
+    }, 2000);
   });
 
   closeBtn.addEventListener("click", function () {
@@ -63,8 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  PDFBtn.addEventListener("click", function () {
-    const { jsPDF } = window.jspdf; // Esto importa jsPDF desde el namespace global
+  function generarPDF() {
+    const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     doc.text(`Ticket de Compra`, 10, 10);
     doc.text(`Cliente: ${usuario}`, 10, 20);
@@ -75,7 +73,38 @@ document.addEventListener("DOMContentLoaded", () => {
       doc.text(`${index + 1}. ${prod.nombre} - Cantidad: ${prod.cantidad} - Subtotal: $${subtotal}`, 10, 40 + (index * 10));
     });
 
+    return doc;
+  }
+
+  PDFBtn.addEventListener("click", function () {
+    const doc = generarPDF();
     doc.save('ticket_compra.pdf');
   });
+
+    // Imprimir el PDF y luego redirigir
+  ImprimirBtn.addEventListener("click", function () {
+    const doc = generarPDF();
+    const pdfBlob = doc.output("blob");   // Convierto PDF en formato Blob (archivo en memoria)
+    const pdfUrl = URL.createObjectURL(pdfBlob);   // URL temporal que apunta al Blob para poder cargarlo en un iframe
+    const iframe = document.createElement("iframe");   // iframe oculto que uso para cargar el PDF y mandar a imprimir
+    iframe.style.display = "none";
+    iframe.src = pdfUrl;
+    document.body.appendChild(iframe);   // iframe al body para que se cargue en el DOM
+
+
+    iframe.onload = function () {   // Cuando haya terminado de cargar el PDF
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+
+      // Esperar un tiempo razonable antes de redirigir (por ejemplo 3 segundos)
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+        URL.revokeObjectURL(pdfUrl); // Limpio recursos
+        window.location.href = "index.html"; // Redirigir después de imprimir
+      }, 5000); // En este caso es un timeout, en un caso real imprimiria un ticket en la maquina y no haria falta un timeout
+      // y no se usaria un iframe
+    };
+  });
+
 
 });
