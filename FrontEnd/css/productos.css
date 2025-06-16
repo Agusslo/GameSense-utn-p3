@@ -58,3 +58,22 @@ body.theme-light .hero h1,
 body.theme-light .hero p{
   color: black !important;
 }
+
+
+/* ======== BOTON ADMIN ======== */
+.btn-admin {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #7AC943, #4CAF50);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-admin:hover {
+  background: linear-gradient(90deg, #6BB13F, #388E3C);
+  transform: scale(1.05);
+}
