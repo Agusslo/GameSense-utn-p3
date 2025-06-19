@@ -13,7 +13,39 @@ let productoAActivarIndex = null;
 function mostrarDashboard() {
     const contenedor = document.getElementById("lista-productos");
     contenedor.innerHTML = "";
-    const productos = JSON.parse(localStorage.getItem("productos")) || [];
+    fetch("http://localhost:4000/api/productos")
+    .then(res => res.json())
+    .then(productos => {
+        const contenedor = document.getElementById("lista-productos");
+        contenedor.innerHTML = "";
+        const categorias = ["auriculares", "teclados"];
+
+        categorias.forEach(categoria => {
+        const productosCategoria = productos.filter(p => p.categoria === categoria);
+        if (productosCategoria.length > 0) {
+            const seccion = document.createElement("section");
+            seccion.className = "seccion-categoria";
+
+            const titulo = document.createElement("h3");
+            titulo.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
+            seccion.appendChild(titulo);
+
+            const grilla = document.createElement("div");
+            grilla.className = "grilla-categoria";
+
+            productosCategoria.forEach(prod => {
+            grilla.appendChild(crearCardProducto(prod, productos.indexOf(prod)));
+            });
+
+            seccion.appendChild(grilla);
+            contenedor.appendChild(seccion);
+        }
+        });
+    })
+    .catch(err => {
+        console.error("Error al obtener productos:", err);
+    });
+
     const categorias = ["auriculares", "teclados"];
     categorias.forEach(categoria => {
         const productosCategoria = productos.filter(p => p.categoria === categoria);

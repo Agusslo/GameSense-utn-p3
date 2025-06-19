@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -29,3 +30,16 @@ const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}/admin/alta.html`);
 });
+
+app.get("/api/productos", (req, res) => {
+  const filePath = path.join(__dirname, "productos.json");
+
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(filePath, "utf8");
+    const productos = JSON.parse(data);
+    res.json(productos);
+  } else {
+    res.json([]);
+  }
+});
+
