@@ -11,8 +11,6 @@ let productoAActivarIndex = null;
 
 //* LISTAR PRODUCTOS EN DASHBOARD
 function mostrarDashboard() {
-    const contenedor = document.getElementById("lista-productos");
-    contenedor.innerHTML = "";
     fetch("http://localhost:4000/api/productos")
     .then(res => res.json())
     .then(productos => {

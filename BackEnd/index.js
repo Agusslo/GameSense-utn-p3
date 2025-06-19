@@ -11,10 +11,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ SERVIR ESTÁTICOS (adminFrontend)
+// (adminFrontend)
 app.use('/admin', express.static(path.join(__dirname, 'adminFront')));
 
-// API (si ya la tenés configurada con rutas)
+// API
 import crearProductoRoutes from './routes/productoRoutes.js';
 import ProductoController from './interfaces/ProductoController.js';
 import CrearProducto from './application/CrearProducto.js';
@@ -25,7 +25,7 @@ const usecase = new CrearProducto(repo);
 const controller = new ProductoController(usecase);
 app.use('/api/productos', crearProductoRoutes(controller));
 
-// ✅ INICIAR SERVIDOR
+// INICIAR SERVIDOR
 const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}/admin/alta.html`);
