@@ -14,6 +14,9 @@ app.use(express.json());
 // (adminFrontend)
 app.use('/admin', express.static(path.join(__dirname, 'adminFront')));
 
+// (FrontEnd)
+app.use('/shop', express.static(path.join(__dirname, '../FrontEnd')));
+
 // API
 import crearProductoRoutes from './routes/productoRoutes.js';
 import ProductoController from './interfaces/ProductoController.js';
