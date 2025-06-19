@@ -52,7 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(nuevoProducto)
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error al guardar producto.");
+                }
+                return response.json();
+            })
             .then(data => {
                 Swal.fire({
                     title: "¡Producto guardado con éxito!",
