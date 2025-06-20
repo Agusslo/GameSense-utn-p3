@@ -16,9 +16,16 @@ export default class ProductoRepositoryJSON {
 
   async guardar(producto) {
     const productos = await this.leer();
-    productos.push(producto);
+
+    const nuevoId = productos.length > 0
+      ? Math.max(...productos.map(p => p.id || 0)) + 1
+      : 1;
+
+    const productoConId = { ...producto, id: nuevoId };
+    productos.push(productoConId);
+
     await fs.writeFile(this.path, JSON.stringify(productos, null, 2));
-    return producto;
+    return productoConId;
   }
 
   async obtenerTodos() {
@@ -36,4 +43,3 @@ export default class ProductoRepositoryJSON {
     throw new Error("Producto no encontrado");
   }
 }
-    

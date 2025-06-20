@@ -9,7 +9,11 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+//app.use(express.json());
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ limit: '10mb' }));
+
+
 
 // (adminFrontend)
 app.use('/admin', express.static(path.join(__dirname, 'adminFront')));
@@ -34,15 +38,4 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}/admin/alta.html`);
 });
 
-app.get("/api/productos", (req, res) => {
-  const filePath = path.join(__dirname, "productos.json");
-
-  if (fs.existsSync(filePath)) {
-    const data = fs.readFileSync(filePath, "utf8");
-    const productos = JSON.parse(data);
-    res.json(productos);
-  } else {
-    res.json([]);
-  }
-});
 

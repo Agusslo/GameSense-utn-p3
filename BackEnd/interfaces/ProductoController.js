@@ -20,5 +20,15 @@ export default class ProductoController {
       res.status(500).json({ error: "Error al actualizar producto" });
     }
 }
+async obtenerTodos(req, res) {
+  try {
+    const productos = await this.crearProducto.repo.obtenerTodos(); // CORREGIDO
+    res.json(productos);
+  } catch (e) {
+    console.error("Error al obtener productos:", e);
+    res.status(500).json({ error: "Error al obtener productos" });
+  }
+}
+
 
 }
