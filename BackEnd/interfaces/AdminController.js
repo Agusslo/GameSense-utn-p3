@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 export default class AdminController {
     constructor(repo) {
     this.repo = repo;
-  }
+    }
 
     async crearAdmin(req, res) {
     const { correo, contrasena } = req.body;
