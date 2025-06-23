@@ -11,7 +11,7 @@ import crearVentaRoutes from './routes/ventasRoutes.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express(); // ✅ Tiene que ir antes de usar 'app'
+const app = express(); 
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
