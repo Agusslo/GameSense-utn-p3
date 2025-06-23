@@ -46,12 +46,12 @@
 
 /* --- ADMIN: DASHBOARD --- */
 #lista-productos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
     padding: 20px;
 }
+
 
 .seccion-categoria {
     margin-bottom: 40px;
