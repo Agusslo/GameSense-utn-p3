@@ -39,6 +39,15 @@ const usecase = new CrearProducto(repo);
 const controller = new ProductoController(usecase);
 app.use('/api/productos', crearProductoRoutes(controller));
 
+//ADMIN
+import AdminRepositoryJSON from './infrastructure/AdminRepositoryJSON.js';
+import AdminController from './interfaces/AdminController.js';
+import crearAdminRoutes from './routes/adminRoutes.js';
+
+const adminRepo = new AdminRepositoryJSON();
+const adminController = new AdminController(adminRepo);
+app.use('/api/admins', crearAdminRoutes(adminController));
+
 // INICIAR SERVIDOR
 const PORT = 4000;
 app.listen(PORT, () => {
