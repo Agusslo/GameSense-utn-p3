@@ -1,0 +1,52 @@
+/* --- ADMIN: LOGIN MEJORADO --- */
+body {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    max-width: 450px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #1e3c72;
+}
+
+.btn-primary {
+    background-color: #1e3c72;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #16325c;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #333;
+}
+
+#mensajeError {
+    font-size: 0.95rem;
+}
