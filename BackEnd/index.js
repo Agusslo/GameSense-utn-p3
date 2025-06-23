@@ -4,16 +4,23 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 
+import VentaRepositoryJSON from './infrastructure/VentaRepositoryJSON.js';
+import VentaController from './interfaces/VentaController.js';
+import crearVentaRoutes from './routes/ventasRoutes.js';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express();
+const app = express(); // ✅ Tiene que ir antes de usar 'app'
+
 app.use(cors());
-//app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.json({ limit: '10mb' }));
 
-
+// ✅ Ahora que app ya existe, podés usarla:
+const ventaRepo = new VentaRepositoryJSON();
+const ventaController = new VentaController(ventaRepo);
+app.use('/api/ventas', crearVentaRoutes(ventaController));
 
 // (adminFrontend)
 app.use('/admin', express.static(path.join(__dirname, 'adminFront')));
@@ -37,5 +44,3 @@ const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}/admin/alta.html`);
 });
-
-

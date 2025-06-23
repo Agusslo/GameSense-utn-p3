@@ -42,34 +42,27 @@ function mostrarCarrito() {
 
 function modificarCantidad(idProducto, cambio) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const productos = JSON.parse(localStorage.getItem("productos")) || [];
 
     const indexCarrito = carrito.findIndex(p => p.id === idProducto);
-    const existeEnProductos = productos.some(p => p.id === idProducto);
 
-    if (indexCarrito !== -1 && existeEnProductos) {
-    carrito[indexCarrito].cantidad += cambio;
+    if (indexCarrito !== -1) {
+        carrito[indexCarrito].cantidad += cambio;
 
-    if (carrito[indexCarrito].cantidad <= 0) {
-        carrito.splice(indexCarrito, 1);
-    }
+        if (carrito[indexCarrito].cantidad <= 0) {
+            carrito.splice(indexCarrito, 1);
+        }
 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    mostrarCarrito();
-    } else {
-    // Si el producto se borro del dashboard, lo borro del carrito
-    carrito = carrito.filter(p => p.id !== idProducto);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    mostrarCarrito();
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        mostrarCarrito();
     }
 }
 
 
 function vaciarCarrito() {
-  if (confirm("¿Estás seguro de que querés vaciar el carrito?")) {
+    if (confirm("¿Estás seguro de que querés vaciar el carrito?")) {
     localStorage.removeItem("carrito");
     mostrarCarrito();
-  }
+    }
 }
 
 

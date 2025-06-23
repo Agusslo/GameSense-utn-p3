@@ -151,4 +151,32 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+
+  btnConfOk.addEventListener("click", function () {
+  modalConf.style.display = "none";
+
+  document.getElementById("modalNombre").textContent = usuario;
+  document.getElementById("modalTotal").textContent = totalTexto.textContent;
+  modal.style.display = "flex";
+
+
+  fetch("http://localhost:4000/api/ventas", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      usuario: usuario,
+      productos: carrito.map(p => ({
+      id: p.id,
+      nombre: p.nombre,
+      precio: p.precio,
+      cantidad: p.cantidad
+      })),
+      total: total,
+      fecha: new Date().toISOString()
+    })
+  });
+
+});
+
+
 });
