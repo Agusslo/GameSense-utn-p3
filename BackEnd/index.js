@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
+import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,9 +33,15 @@ app.use('/shop', express.static(path.join(__dirname, '../FrontEnd')));
 import crearProductoRoutes from './routes/productoRoutes.js';
 import ProductoController from './interfaces/ProductoController.js';
 import CrearProducto from './application/CrearProducto.js';
-import ProductoRepositoryJSON from './infrastructure/ProductoRepositoryJSON.js';
+import ProductoRepositoryMongo from './infrastructure/ProductoRepositoryMongo.js';
 
-const repo = new ProductoRepositoryJSON('./productos.json');
+const MONGO_URI = 'mongodb://localhost:27017/miapp';
+
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch(err => console.error('Error al conectar a MongoDB:', err));
+
+const repo = new ProductoRepositoryMongo();
 const usecase = new CrearProducto(repo);
 const controller = new ProductoController(usecase);
 app.use('/api/productos', crearProductoRoutes(controller));
