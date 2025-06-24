@@ -14,7 +14,7 @@ function obtenerTodosLosProductos() {
 
 function agregarAlCarrito(producto) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const productoExistente = carrito.find(p => p.id === producto.id);
+    const productoExistente = carrito.find(p => p._id === producto._id);
 
     if (productoExistente) {
         productoExistente.cantidad += 1;

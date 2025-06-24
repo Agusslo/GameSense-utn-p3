@@ -19,23 +19,23 @@ function mostrarCarrito() {
             <h3>${producto.nombre}</h3>
             <p>Precio: $${producto.precio}</p>
             <p>Cantidad: 
-                <button class="btn-menos" data-id="${producto.id}">➖</button>
+                <button class="btn-menos" data-id="${producto._id}">➖</button>
                 <span>${producto.cantidad}</span>
-                <button class="btn-mas" data-id="${producto.id}">➕</button> 
+                <button class="btn-mas" data-id="${producto._id}">➕</button> 
             </p>
         `;
         contenedor.appendChild(card);
-    });
+    }); 
 
     document.querySelectorAll(".btn-mas").forEach(btn => {
         btn.addEventListener("click", (e) => {
-            modificarCantidad(parseInt(e.target.dataset.id), 1);
+            modificarCantidad(e.target.dataset.id, 1);
         });
     });
 
     document.querySelectorAll(".btn-menos").forEach(btn => {
         btn.addEventListener("click", (e) => {
-            modificarCantidad(parseInt(e.target.dataset.id), -1);
+            modificarCantidad(e.target.dataset.id, -1);
         });
     });
 }
@@ -43,7 +43,7 @@ function mostrarCarrito() {
 function modificarCantidad(idProducto, cambio) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    const indexCarrito = carrito.findIndex(p => p.id === idProducto);
+    const indexCarrito = carrito.findIndex(p => p._id === idProducto);
 
     if (indexCarrito !== -1) {
         carrito[indexCarrito].cantidad += cambio;

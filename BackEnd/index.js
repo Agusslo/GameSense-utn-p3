@@ -15,11 +15,11 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.json({ limit: '10mb' }));
 
 // -------------------- VENTAS --------------------
-import VentaRepositoryJSON from './infrastructure/VentaRepositoryJSON.js';
+import VentaRepositoryMongo from './infrastructure/VentaRepositoryMongo.js';
 import VentaController from './interfaces/VentaController.js';
 import crearVentaRoutes from './routes/ventasRoutes.js';
 
-const ventaRepo = new VentaRepositoryJSON();
+const ventaRepo = new VentaRepositoryMongo();
 const ventaController = new VentaController(ventaRepo);
 app.use('/api/ventas', crearVentaRoutes(ventaController));
 
@@ -47,11 +47,11 @@ const controller = new ProductoController(usecase);
 app.use('/api/productos', crearProductoRoutes(controller));
 
 // -------------------- ADMIN --------------------
-import AdminRepositoryJSON from './infrastructure/AdminRepositoryJSON.js';
+import AdminRepositoryMongo from './infrastructure/AdminRepositoryMongo.js';
 import AdminController from './interfaces/AdminController.js';
 import crearAdminRoutes from './routes/adminRoutes.js';
 
-const adminRepo = new AdminRepositoryJSON();
+const adminRepo = new AdminRepositoryMongo();
 const adminController = new AdminController(adminRepo);
 app.use('/api/admins', crearAdminRoutes(adminController));
 
