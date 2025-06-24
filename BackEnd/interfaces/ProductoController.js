@@ -5,14 +5,20 @@ export default class ProductoController {
     this.obtenerProductos = obtenerProductos;
   }
 
-  async crear(req, res) {
-    try {
-      const producto = await this.crearProducto.ejecutar(req.body);
-      res.status(201).json(producto);
-    } catch (e) {
-      res.status(500).json({ error: "Error al guardar producto" });
-    }
+async crear(req, res) {
+  try {
+const datosProducto = {
+  ...req.body,
+  imagen: req.file ? `/uploads/${req.file.filename}` : undefined
+};
+
+const producto = await this.crearProducto.ejecutar(datosProducto);
+    res.status(201).json(producto);
+  } catch (e) {
+    res.status(500).json({ error: "Error al guardar producto" });
   }
+}
+
 
   async actualizar(req, res) {
     try {

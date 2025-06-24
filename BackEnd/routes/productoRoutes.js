@@ -1,10 +1,13 @@
 import express from 'express';
+import upload from '../infrastructure/config/multerConfig.js'; 
 
 export default function crearProductoRoutes(controller) {
   const router = express.Router();
-  router.post('/', controller.crear.bind(controller)); // post
-  router.put('/:id', controller.actualizar.bind(controller)); //put
-  router.get('/', controller.obtenerTodos.bind(controller));// get
-  router.get('/:id', controller.obtenerPorId.bind(controller)); // get por id
+
+  router.post('/', upload.single('imagen'), controller.crear.bind(controller));
+  router.put('/:id', controller.actualizar.bind(controller));
+  router.get('/', controller.obtenerTodos.bind(controller));
+  router.get('/:id', controller.obtenerPorId.bind(controller));
+
   return router;
 }

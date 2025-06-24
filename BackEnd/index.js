@@ -58,6 +58,7 @@ const productoController = new ProductoController({
   obtenerProductos: new ObtenerProductos(productoRepo),
 });
 
+app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 app.use('/api/productos', crearProductoRoutes(productoController));
 
 // -------------------- ADMIN --------------------

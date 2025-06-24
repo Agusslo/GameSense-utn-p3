@@ -48,78 +48,65 @@ document.addEventListener("DOMContentLoaded", () => {
     });
  
     // Manejar el envío del formulario
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        // Validar campos
-        const nombre = document.getElementById("nombre").value;
-        const categoria = document.getElementById("categoria").value;
-        const precio = parseFloat(document.getElementById("precio").value);
-        const file = inputArchivo.files[0];
+ form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-        // Funcion para enviar el producto al servidor
-        const procesarProducto = (imagen) => {
-            const producto = {
-                nombre,
-                categoria,
-                precio,
-                imagen,
-                activo: true
-            };
+    const nombre = document.getElementById("nombre").value;
+    const categoria = document.getElementById("categoria").value;
+    const precio = parseFloat(document.getElementById("precio").value);
+    const file = inputArchivo.files[0];
 
-            // Definir URL y método HTTP según si se está modificando o creando
-            const url = modificarIndex !== null
-                ? `http://localhost:4000/api/productos/${productoExistente._id}`
-                : "http://localhost:4000/api/productos";
+    if (!file && !productoExistente) {
+        return Swal.fire({
+            title: "Imagen requerida",
+            text: "Por favor, seleccioná una imagen.",
+            icon: "warning",
+            confirmButtonText: "OK"
+        });
+    }
 
-            const metodo = modificarIndex !== null ? "PUT" : "POST"; // Si es modificación, usar PUT, si es alta, usar POST
-                
-            fetch(url, {
-                method: metodo,
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(producto)
-            })
-                .then(response => {
-                    if (!response.ok) throw new Error("Error al guardar/modificar producto.");
-                    return response.json();
-                })
-                .then(() => {
-                    Swal.fire({
-                        title: modificarIndex !== null ? "¡Producto modificado!" : "¡Producto guardado!",
-                        icon: "success",
-                        confirmButtonText: "OK"
-                    }).then(() => { // Volver al dashboard después de guardar
-                        localStorage.removeItem("modificarIndex"); 
-                        form.reset();
-                        preview.style.display = "none";
-                        infoImagenActual.style.display = "none";
-                        setTimeout(() => window.location.href = "dashboard.html", 300);
-                    });
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    Swal.fire({
-                        title: "Error",
-                        text: "No se pudo guardar/modificar el producto.",
-                        icon: "error",
-                        confirmButtonText: "OK"
-                    });
-                });
-        };
-        // Validar imagen: si hay una nueva, usarla; si no y hay imagen previa, reutilizarla; si no hay nada, error
-        if (file) { // Si se seleccionó una nueva imagen
-            const reader = new FileReader();
-            reader.onload = (e) => procesarProducto(e.target.result);
-            reader.readAsDataURL(file);
-        } else if (productoExistente) {
-            // Si no se cambió la imagen, usar la anterior
-            procesarProducto(productoExistente.imagen);
-        } else {
+    const url = modificarIndex !== null
+        ? `http://localhost:4000/api/productos/${productoExistente._id}`
+        : "http://localhost:4000/api/productos";
+
+    const metodo = modificarIndex !== null ? "PUT" : "POST";
+
+    const formData = new FormData();
+    formData.append("nombre", nombre);
+    formData.append("categoria", categoria);
+    formData.append("precio", precio);
+    formData.append("activo", true);
+    if (file) formData.append("imagen", file);
+
+    fetch(url, {
+        method: metodo,
+        body: formData
+    })
+        .then(response => {
+            if (!response.ok) throw new Error("Error al guardar/modificar producto.");
+            return response.json();
+        })
+        .then(() => {
             Swal.fire({
-                title: "Imagen requerida",
-                text: "Por favor, seleccioná una imagen.",
-                icon: "warning",
+                title: modificarIndex !== null ? "¡Producto modificado!" : "¡Producto guardado!",
+                icon: "success",
+                confirmButtonText: "OK"
+            }).then(() => {
+                localStorage.removeItem("modificarIndex");
+                form.reset();
+                preview.style.display = "none";
+                infoImagenActual.style.display = "none";
+                setTimeout(() => window.location.href = "dashboard.html", 300);
+            });
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            Swal.fire({
+                title: "Error",
+                text: "No se pudo guardar/modificar el producto.",
+                icon: "error",
                 confirmButtonText: "OK"
             });
-        }
+        });
     });
 });
