@@ -1,4 +1,4 @@
-import Producto from '../domain/Producto.js';
+import Producto from '../../domain/entidades/Producto.js';
 
 export default class CrearProducto {
   constructor(repo) {
@@ -7,7 +7,7 @@ export default class CrearProducto {
 
   async ejecutar(datos) {
     const nuevo = new Producto({
-      id: Date.now(),
+      id: Date.now(), // temporal, lo ideal es que mongo genere el _id
       ...datos
     });
 

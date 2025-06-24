@@ -1,4 +1,4 @@
-import AdminModel from './AdminModel.js';
+import AdminModel from '../models/AdminModel.js';
 import bcrypt from 'bcrypt';
 
 export default class AdminRepositoryMongo {

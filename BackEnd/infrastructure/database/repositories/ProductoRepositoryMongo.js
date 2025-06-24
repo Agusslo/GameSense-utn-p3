@@ -1,4 +1,4 @@
-import ProductoModel from './ProductoModel.js';
+import ProductoModel from '../models/ProductoModel.js';
 
 export default class ProductoRepositoryMongo {
   async guardar(producto) {

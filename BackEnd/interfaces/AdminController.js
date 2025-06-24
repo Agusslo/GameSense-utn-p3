@@ -1,23 +1,20 @@
-import bcrypt from 'bcrypt';
-
 export default class AdminController {
-    constructor(repo) {
-    this.repo = repo;
-    }
+  constructor({ crearAdmin }) {
+    this.crearAdmin = crearAdmin;
+  }
 
-    async crearAdmin(req, res) {
-    const { correo, contrasena } = req.body;
-    if (!correo || !contrasena) {
-        return res.status(400).json({ mensaje: 'Faltan campos' });
+  async crear(req, res) {
+    try {
+      await this.crearAdmin.ejecutar(req.body);
+      res.status(201).json({ mensaje: 'Admin creado correctamente' });
+    } catch (e) {
+      if (e.message === 'Faltan campos') {
+        res.status(400).json({ mensaje: e.message });
+      } else if (e.message === 'El admin ya existe') {
+        res.status(409).json({ mensaje: e.message });
+      } else {
+        res.status(500).json({ error: 'Error al crear admin' });
+      }
     }
-
-    const existe = await this.repo.existeAdmin(correo);
-    if (existe) {
-        return res.status(409).json({ mensaje: 'El admin ya existe' });
-    }
-
-    const hash = await bcrypt.hash(contrasena, 10);
-    await this.repo.guardarAdmin({ correo, contrasena: hash });
-    res.status(201).json({ mensaje: 'Admin creado correctamente' });
-    }
+  }
 }

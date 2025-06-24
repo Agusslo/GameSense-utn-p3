@@ -1,34 +1,35 @@
 export default class ProductoController {
-  constructor(crearProducto) {
+  constructor({ crearProducto, actualizarProducto, obtenerProductos }) {
     this.crearProducto = crearProducto;
+    this.actualizarProducto = actualizarProducto;
+    this.obtenerProductos = obtenerProductos;
   }
 
   async crear(req, res) {
     try {
-      const prod = await this.crearProducto.ejecutar(req.body);
-      res.status(201).json(prod);
+      const producto = await this.crearProducto.ejecutar(req.body);
+      res.status(201).json(producto);
     } catch (e) {
       res.status(500).json({ error: "Error al guardar producto" });
     }
   }
-  async actualizar(req, res) { // actualizar productos
+
+  async actualizar(req, res) {
     try {
       const id = parseInt(req.params.id);
-      const actualizado = await this.crearProducto.repo.actualizar(id, req.body); // usar directamente el repo
+      const actualizado = await this.actualizarProducto.ejecutar(id, req.body);
       res.json(actualizado);
     } catch (e) {
       res.status(500).json({ error: "Error al actualizar producto" });
     }
-}
-async obtenerTodos(req, res) {
-  try {
-    const productos = await this.crearProducto.repo.obtenerTodos(); // CORREGIDO
-    res.json(productos);
-  } catch (e) {
-    console.error("Error al obtener productos:", e);
-    res.status(500).json({ error: "Error al obtener productos" });
   }
-}
 
-
+  async obtenerTodos(req, res) {
+    try {
+      const productos = await this.obtenerProductos.ejecutar();
+      res.json(productos);
+    } catch (e) {
+      res.status(500).json({ error: "Error al obtener productos" });
+    }
+  }
 }

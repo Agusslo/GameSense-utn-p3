@@ -1,4 +1,4 @@
-import VentaModel from './VentaModel.js';
+import VentaModel from '../models/VentaModel.js';
 
 export default class VentaRepositoryMongo {
   async guardarVenta(venta) {
@@ -11,4 +11,5 @@ export default class VentaRepositoryMongo {
     const ventas = await VentaModel.find().sort({ fecha: -1 });
     return ventas.map(v => v.toObject());
   }
+
 }

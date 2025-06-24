@@ -7,21 +7,33 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const app = express(); 
+const MONGO_URI = 'mongodb://localhost:27017/miapp';
+
+mongoose.connect(MONGO_URI)
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch(err => console.error('Error al conectar a MongoDB:', err));
+
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.json({ limit: '10mb' }));
 
 // -------------------- VENTAS --------------------
-import VentaRepositoryMongo from './infrastructure/VentaRepositoryMongo.js';
 import VentaController from './interfaces/VentaController.js';
+import VentaRepositoryMongo from './infrastructure/database/repositories/VentaRepositoryMongo.js';
 import crearVentaRoutes from './routes/ventasRoutes.js';
 
+import RegistrarVentas from './application/casoUso/RegistrarVentas.js';
+import ListarVentas from './application/casoUso/ListarVentas.js';
+
 const ventaRepo = new VentaRepositoryMongo();
-const ventaController = new VentaController(ventaRepo);
+const ventaController = new VentaController({
+  registrarVenta: new RegistrarVentas(ventaRepo),
+  listarVentas: new ListarVentas(ventaRepo)
+});
 app.use('/api/ventas', crearVentaRoutes(ventaController));
+
 
 // -------------------- ADMIN FRONTEND --------------------
 app.use('/admin', express.static(path.join(__dirname, 'adminFront')));
@@ -32,28 +44,35 @@ app.use('/shop', express.static(path.join(__dirname, '../FrontEnd')));
 // -------------------- PRODUCTOS --------------------
 import crearProductoRoutes from './routes/productoRoutes.js';
 import ProductoController from './interfaces/ProductoController.js';
-import CrearProducto from './application/CrearProducto.js';
-import ProductoRepositoryMongo from './infrastructure/ProductoRepositoryMongo.js';
+import ProductoRepositoryMongo from './infrastructure/database/repositories/ProductoRepositoryMongo.js';
 
-const MONGO_URI = 'mongodb://localhost:27017/miapp';
+import CrearProducto from './application/casoUso/CrearProducto.js';
+import ActualizarProducto from './application/casoUso/ActualizarProducto.js';
+import ObtenerProductos from './application/casoUso/ObtenerProductos.js';
 
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('Conectado a MongoDB'))
-  .catch(err => console.error('Error al conectar a MongoDB:', err));
+const productoRepo = new ProductoRepositoryMongo();
 
-const repo = new ProductoRepositoryMongo();
-const usecase = new CrearProducto(repo);
-const controller = new ProductoController(usecase);
-app.use('/api/productos', crearProductoRoutes(controller));
+const productoController = new ProductoController({
+  crearProducto: new CrearProducto(productoRepo),
+  actualizarProducto: new ActualizarProducto(productoRepo),
+  obtenerProductos: new ObtenerProductos(productoRepo),
+});
+
+app.use('/api/productos', crearProductoRoutes(productoController));
 
 // -------------------- ADMIN --------------------
-import AdminRepositoryMongo from './infrastructure/AdminRepositoryMongo.js';
 import AdminController from './interfaces/AdminController.js';
+import AdminRepositoryMongo from './infrastructure/database/repositories/AdminRepositoryMongo.js';
 import crearAdminRoutes from './routes/adminRoutes.js';
 
+import CrearAdmin from './application/casoUso/CrearAdmin.js';
+
 const adminRepo = new AdminRepositoryMongo();
-const adminController = new AdminController(adminRepo);
+const adminController = new AdminController({
+  crearAdmin: new CrearAdmin(adminRepo)
+});
 app.use('/api/admins', crearAdminRoutes(adminController));
+
 
 // -------------------- SERVIDOR --------------------
 const PORT = 4000;
