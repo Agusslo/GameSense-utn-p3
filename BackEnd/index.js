@@ -8,10 +8,10 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express(); 
-const MONGO_URI = 'mongodb://localhost:27017/miapp';
+const MONGO_URI = 'mongodb+srv://axeloy1:Axelote123.@gamersense.6dtperb.mongodb.net/?retryWrites=true&w=majority&appName=Gamersense';
 
 mongoose.connect(MONGO_URI)
-  .then(() => console.log('Conectado a MongoDB'))
+  .then(() => console.log('Conectado a MongoDB Atlas'))
   .catch(err => console.error('Error al conectar a MongoDB:', err));
 
 
@@ -77,5 +77,5 @@ app.use('/api/admins', crearAdminRoutes(adminController));
 // -------------------- SERVIDOR --------------------
 const PORT = 4000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}/admin/alta.html`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
