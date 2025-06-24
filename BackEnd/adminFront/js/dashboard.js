@@ -80,7 +80,7 @@ function mostrarModal(index) {
     .then(res => res.json())
     .then(productos => {
         const producto = productos[index];
-        productoAEliminarId = producto.id;
+        productoAEliminarId = producto._id;
 
         const modal = document.getElementById("modalConfirmacion");
         const mensaje = document.getElementById("mensajeConfirmacion");
@@ -120,7 +120,7 @@ function mostrarModalActivar(index) {
     .then(res => res.json())
     .then(productos => {
         const producto = productos[index];
-        productoAActivarId = producto.id;
+        productoAActivarId = producto._id;
 
         const modal = document.getElementById("modalActivar");
         const texto = document.getElementById("textModalActivar");

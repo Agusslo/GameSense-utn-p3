@@ -5,5 +5,6 @@ export default function crearProductoRoutes(controller) {
   router.post('/', controller.crear.bind(controller)); // post
   router.put('/:id', controller.actualizar.bind(controller)); //put
   router.get('/', controller.obtenerTodos.bind(controller));// get
+  router.get('/:id', controller.obtenerPorId.bind(controller)); // get por id
   return router;
 }

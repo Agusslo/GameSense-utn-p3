@@ -7,7 +7,6 @@ export default class CrearProducto {
 
   async ejecutar(datos) {
     const nuevo = new Producto({
-      id: Date.now(), // temporal, lo ideal es que mongo genere el _id
       ...datos
     });
 

@@ -16,7 +16,7 @@ export default class ProductoController {
 
   async actualizar(req, res) {
     try {
-      const id = parseInt(req.params.id);
+      const id = req.params.id;
       const actualizado = await this.actualizarProducto.ejecutar(id, req.body);
       res.json(actualizado);
     } catch (e) {
@@ -30,6 +30,18 @@ export default class ProductoController {
       res.json(productos);
     } catch (e) {
       res.status(500).json({ error: "Error al obtener productos" });
+    }
+  }
+  async obtenerPorId(req, res) {
+    try {
+      const id = req.params.id;
+      const producto = await this.obtenerProductos.ejecutar(id);
+      if (!producto) {
+        return res.status(404).json({ mensaje: "Producto no encontrado" });
+      }
+      res.json(producto);
+    } catch (e) {
+      res.status(500).json({ error: "Error al obtener producto" });
     }
   }
 }

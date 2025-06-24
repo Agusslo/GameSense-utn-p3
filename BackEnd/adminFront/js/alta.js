@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const preview = document.getElementById("previewImagen");
     const inputArchivo = document.getElementById("imagenArchivo");
     const infoImagenActual = document.getElementById("infoImagenActual");
-
+    const volverBtn = document.getElementById("volver");
+    volverBtn.addEventListener("click", () => {
+        localStorage.removeItem("modificarIndex");
+    });
     // Verificar si hay un index guardado en localStorage, si es así, estamos en modo modificación
     const modificarIndex = localStorage.getItem("modificarIndex");
     let productoExistente = null;
@@ -20,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById("nombre").value = productoExistente.nombre;
                     document.getElementById("categoria").value = productoExistente.categoria;
                     document.getElementById("precio").value = productoExistente.precio;
+                    document.getElementById("formAlta").dataset.id = productoExistente._id;
                     preview.src = productoExistente.imagen;
                     preview.style.display = "block";
                     infoImagenActual.style.display = "block"; // Mostrar info de imagen actual
@@ -46,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Manejar el envío del formulario
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-
         // Validar campos
         const nombre = document.getElementById("nombre").value;
         const categoria = document.getElementById("categoria").value;
@@ -65,11 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Definir URL y método HTTP según si se está modificando o creando
             const url = modificarIndex !== null
-                ? `http://localhost:4000/api/productos/${productoExistente.id}`
+                ? `http://localhost:4000/api/productos/${productoExistente._id}`
                 : "http://localhost:4000/api/productos";
 
             const metodo = modificarIndex !== null ? "PUT" : "POST"; // Si es modificación, usar PUT, si es alta, usar POST
-
+                
             fetch(url, {
                 method: metodo,
                 headers: { "Content-Type": "application/json" },
