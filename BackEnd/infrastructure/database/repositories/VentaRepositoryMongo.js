@@ -8,8 +8,10 @@ export default class VentaRepositoryMongo {
   }
 
   async obtenerVentas() {
-    const ventas = await VentaModel.find().sort({ fecha: -1 });
+    const ventas = await VentaModel.find()
+      .populate('productos.producto') 
+      .sort({ fecha: -1 });
+
     return ventas.map(v => v.toObject());
   }
-
 }

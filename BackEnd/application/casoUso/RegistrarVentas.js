@@ -6,7 +6,10 @@ export default class RegistrarVenta {
   async ejecutar({ usuario, productos, total }) {
     const venta = {
       usuario,
-      productos,
+      productos: productos.map(p => ({
+        producto: p.id,
+        cantidad: p.cantidad
+      })),
       total,
       fecha: new Date().toISOString()
     };
