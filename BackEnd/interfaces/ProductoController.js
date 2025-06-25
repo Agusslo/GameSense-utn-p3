@@ -23,12 +23,18 @@ const producto = await this.crearProducto.ejecutar(datosProducto);
   async actualizar(req, res) {
     try {
       const id = req.params.id;
-      const actualizado = await this.actualizarProducto.ejecutar(id, req.body);
+      const datosActualizados = {
+        ...req.body,
+        imagen: req.file ? `/uploads/${req.file.filename}` : undefined
+      };
+
+      const actualizado = await this.actualizarProducto.ejecutar(id, datosActualizados);
       res.json(actualizado);
     } catch (e) {
       res.status(500).json({ error: "Error al actualizar producto" });
     }
-  }
+}
+
 
   async obtenerTodos(req, res) {
     try {
