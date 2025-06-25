@@ -64,10 +64,10 @@ main {
 
 
 body.theme-light {
-  
-  background-color: #f5f5f5;
+  background-color: #ffffff; /* Antes: #f5f5f5 */
   color: #000000;
 }
+
 
 /* ======== Keyframes ======== */
 
@@ -194,5 +194,40 @@ body.theme-light .grid-productos {
 }
 
 .theme-light .card-producto button:hover {
-  background-color: #d5d5d5;
+  background-color: #cfcfcf; /* un poquito más visible */
 }
+
+
+
+/* ======== SOL/LUNA ======== */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  margin-left: 10px;
+}
+
+.theme-toggle-btn img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle-btn:hover img {
+  transform: scale(1.1);
+}
+
+.theme-toggle-btn img {
+  filter: invert(1);
+  transition: transform 0.3s;
+}
+
+.theme-toggle-btn:hover img {
+  transform: rotate(240deg);
+}
+
+body.theme-light .theme-toggle-btn img {
+  filter: invert(0);
+}
+

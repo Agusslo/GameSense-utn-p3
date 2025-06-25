@@ -2,54 +2,25 @@ fetch("header.html")
   .then(response => response.text())
   .then(data => {
     document.getElementById("header-container").innerHTML = data;
-    configModal();
+    initThemeSwitcher();
   });
 
-function configModal() {
-  const configBtn = document.getElementById("btn-config");
-  const modal = document.getElementById("configModal");
-  const closeBtn = document.querySelector(".close-config");
+function initThemeSwitcher() {
+  const toggleBtn = document.getElementById("themeToggleBtn");
+  const themeIcon = document.getElementById("themeIcon");
 
-  if (configBtn && modal && closeBtn) {
-    configBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      modal.style.display = "block";
-    });
+  const setTheme = (theme) => {
+    document.body.classList.toggle("theme-light", theme === "light");
+    localStorage.setItem("theme", theme);
+    themeIcon.src = theme === "dark" ? "./img/moon.svg" : "./img/sun.svg";
+  };
 
-    closeBtn.addEventListener("click", function () {
-      modal.style.display = "none";
-    });
+  toggleBtn.addEventListener("click", () => {
+    const currentTheme = localStorage.getItem("theme") || "dark";
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  });
 
-    window.addEventListener("click", function (e) {
-      if (e.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-  }
-
-  const select = document.getElementById("themeSelect");
-  if (select) {
-    const savedTheme = localStorage.getItem("theme") || "auto";
-    select.value = savedTheme;
-    applyTheme(savedTheme);
-
-    select.addEventListener("change", () => {
-      const selected = select.value;
-      localStorage.setItem("theme", selected);
-      applyTheme(selected);
-    });
-  }
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  setTheme(savedTheme);
 }
-
-function applyTheme(theme) {
-  document.body.classList.remove("theme-light");
-  if (theme === "light") {
-    document.body.classList.add("theme-light");
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme") || "dark"; 
-  applyTheme(savedTheme);
-});
-

@@ -16,37 +16,3 @@ header {
   height: 60px;
 }
 
-
-/* ======== CONFIG MODAL ======== */
-
-.config-modal {
-  display: none;
-  position: fixed;
-  z-index: 1050;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.config-content {
-  background-color: #1a1a1a;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  color: white;
-  box-shadow: 0 0 15px #000;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.close-config {
-  color: white;
-  float: right;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
