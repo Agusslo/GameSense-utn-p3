@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     body: JSON.stringify({
       usuario: usuario,
       productos: carrito.map(p => ({
-      id: p.id,
+      id: p._id,
       nombre: p.nombre,
       precio: p.precio,
       cantidad: p.cantidad
