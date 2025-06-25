@@ -8,8 +8,7 @@
 <link rel="icon" href="./img/logoPestania.png" type="image/png" />
 <link rel="stylesheet" href="./css/style.css"/>
 <link rel="stylesheet" href="./css/ticket.css"/>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <header id="header-container"></header>
@@ -20,6 +19,8 @@
     <div id="detalleTicket" class="ticket-detalle"></div>
     <p id="totalTicket" class="ticket-total"></p>
     <button id="btn-total" class="btn-total">Finalizar compra</button>
+    <button class="btn btn-secondary mt-4" data-bs-toggle="modal" data-bs-target="#modalReinicio"> Volver al inicio </button>
+
 </main>
 
 <!-- Modal ticket -->
@@ -58,6 +59,29 @@
     </div>
   </div>
 </div>
+
+
+<!-- Modal de Reinicio -->
+<div class="modal fade" id="modalReinicio" tabindex="-1" aria-labelledby="modalReinicioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background-color: #111; color: white; border-radius: 12px; border: none;">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="modalReinicioLabel">¿Volver al inicio?</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-start" style="font-size: 1rem;">
+        Esto eliminará tu ticket actual para que otra persona pueda comprar.
+      </div>
+      <div class="modal-footer border-0 justify-content-end">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" id="confirmarReinicio">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -192,3 +192,22 @@
 .theme-light .ticket-item span {
   color: black;
 }
+
+/* ======== Reinicio ======== */
+
+.modal-content {
+  background-color: #111;
+  color: white;
+  border-radius: 12px;
+  border: none;
+}
+
+.modal-header,
+.modal-footer {
+  border: none;
+}
+
+.btn-close-white {
+  filter: invert(1);
+}
+

@@ -43,13 +43,13 @@ function configModal() {
 
 function applyTheme(theme) {
   document.body.classList.remove("theme-light");
-
   if (theme === "light") {
     document.body.classList.add("theme-light");
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme") || "auto";
+  const savedTheme = localStorage.getItem("theme") || "dark"; 
   applyTheme(savedTheme);
 });
+
