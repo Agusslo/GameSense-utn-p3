@@ -158,17 +158,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("modalNombre").textContent = usuario;
   document.getElementById("modalTotal").textContent = totalTexto.textContent;
   modal.style.display = "flex";
-
-
+  
+  console.log(carrito);
   fetch("http://localhost:4000/api/ventas", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       usuario: usuario,
       productos: carrito.map(p => ({
-      id: p._id,
-      nombre: p.nombre,
-      precio: p.precio,
+      producto: p.id || p._id,    
       cantidad: p.cantidad
       })),
       total: total,

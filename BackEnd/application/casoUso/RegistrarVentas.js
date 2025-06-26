@@ -1,18 +1,12 @@
+import Venta from "../../domain/entidades/Venta.js";
+
 export default class RegistrarVenta {
-  constructor(repo) {
-    this.repo = repo;
+  constructor(ventaRepo) {
+    this.ventaRepo = ventaRepo;
   }
 
-  async ejecutar({ usuario, productos, total }) {
-    const venta = {
-      usuario,
-      productos: productos.map(p => ({
-        producto: p.id,
-        cantidad: p.cantidad
-      })),
-      total,
-      fecha: new Date().toISOString()
-    };
-    return await this.repo.guardarVenta(venta);
+  async ejecutar(datos) {
+    const nuevaVenta = new Venta(datos);
+    return await this.ventaRepo.guardarVenta(nuevaVenta);
   }
 }

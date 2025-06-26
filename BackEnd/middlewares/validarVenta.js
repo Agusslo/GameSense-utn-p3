@@ -15,6 +15,7 @@ export const validarVenta = [
   (req, res, next) => {
     const errores = validationResult(req);
     if (!errores.isEmpty()) {
+        console.log("errores", errores.array());
       return res.status(400).json({ errores: errores.array() });
     }
     next();

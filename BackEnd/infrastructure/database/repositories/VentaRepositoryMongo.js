@@ -1,9 +1,15 @@
 import VentaModel from '../models/VentaModel.js';
 
 export default class VentaRepositoryMongo {
-  async guardarVenta(venta) {
-    const nuevaVenta = new VentaModel(venta);
-    const guardada = await nuevaVenta.save();
+  async guardarVenta(ventaEntidad) {
+    const ventaDoc = new VentaModel({
+      usuario: ventaEntidad.usuario,
+      productos: ventaEntidad.productos,
+      total: ventaEntidad.total,
+      fecha: ventaEntidad.fecha
+    });
+
+    const guardada = await ventaDoc.save();
     return guardada.toObject();
   }
 
