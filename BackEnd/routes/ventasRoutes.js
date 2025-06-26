@@ -1,10 +1,11 @@
+import { validarVenta } from '../middlewares/validarVenta.js';
 import express from 'express';
 
 export default function crearVentaRoutes(controller) {
-const router = express.Router();
+  const router = express.Router();
 
-router.post('/', controller.registrarVentas.bind(controller));
-router.get('/', controller.listar.bind(controller));
+  router.post('/', validarVenta, controller.registrarVentas.bind(controller));
+  router.get('/', controller.listar.bind(controller));
 
-return router;
+  return router;
 }
