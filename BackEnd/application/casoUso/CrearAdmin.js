@@ -6,6 +6,7 @@ export default class CrearAdmin {
   }
 
   async ejecutar({ correo, contrasena }) {
+    console.log('correo:', correo, 'contrasena:', contrasena);
     if (!correo || !contrasena) {
       throw new Error('Faltan campos');
     }
@@ -15,7 +16,7 @@ export default class CrearAdmin {
       throw new Error('El admin ya existe');
     }
 
-    const hash = await bcrypt.hash(contrasena, 10);
+    const hash = bcrypt.hashSync(contrasena, 10);
     return await this.repo.guardarAdmin({ correo, contrasena: hash });
   }
 }

@@ -22,7 +22,7 @@ app.use(express.json({ limit: '10mb' }));
 // -------------------- VENTAS --------------------
 import VentaController from './interfaces/VentaController.js';
 import VentaRepositoryMongo from './infrastructure/database/repositories/VentaRepositoryMongo.js';
-import crearVentaRoutes from './routes/ventasRoutes.js';
+import crearVentaRoutes from './routes/ventasRoutes.js'; 
 
 import RegistrarVentas from './application/casoUso/RegistrarVentas.js';
 import ListarVentas from './application/casoUso/ListarVentas.js';
@@ -32,6 +32,7 @@ const ventaController = new VentaController({
   registrarVenta: new RegistrarVentas(ventaRepo),
   listarVentas: new ListarVentas(ventaRepo)
 });
+
 app.use('/api/ventas', crearVentaRoutes(ventaController));
 
 

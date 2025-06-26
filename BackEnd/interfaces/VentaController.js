@@ -21,4 +21,15 @@ export default class VentaController {
       res.status(500).json({ error: "Error al obtener ventas" });
     }
   }
+
+  async obtenerVentas(req, res) {
+  try {
+    const ventas = await this.ventaRepository.obtenerTodas();
+    res.status(200).json(ventas);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener ventas' });
+  }
+}
+
+
 }

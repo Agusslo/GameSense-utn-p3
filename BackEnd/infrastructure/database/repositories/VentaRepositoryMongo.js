@@ -20,4 +20,9 @@ export default class VentaRepositoryMongo {
 
     return ventas.map(v => v.toObject());
   }
+
+  async obtenerTodas() {
+  return await VentaModel.find();
+}
+
 }
