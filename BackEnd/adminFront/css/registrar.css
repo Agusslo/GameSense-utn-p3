@@ -1,0 +1,78 @@
+/* Fondo con gradiente suave */
+body {
+  background: linear-gradient(135deg, #0a387e, #c3cfe2);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Tarjeta del formulario */
+.card {
+  border: none;
+  border-radius: 16px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+/* Título */
+.card h3 {
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.2);
+}
+
+/* Botón */
+.btn-primary {
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+/* Mensaje */
+#mensaje span {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 500;
+  color: #dc3545;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  } to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -79,6 +79,14 @@ const adminController = new AdminController({
 app.use('/api/admins', crearAdminRoutes(adminController));
 
 
+// -------------------- LOGIN --------------------
+import crearLoginRoutes from './routes/loginRoutes.js';
+import LoginController from './interfaces/LoginController.js';
+
+const loginController = new LoginController(adminRepo);
+app.use('/api/login', crearLoginRoutes(loginController));
+
+
 // -------------------- SERVIDOR --------------------
 const PORT = 4000;
 app.listen(PORT, () => {

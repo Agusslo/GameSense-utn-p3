@@ -3,8 +3,7 @@ import bcrypt from 'bcrypt';
 
 export default class AdminRepositoryMongo {
     async guardarAdmin(admin) {
-        const hash = await bcrypt.hash(admin.contrasena, 10);
-        const nuevo = new AdminModel({ ...admin, contrasena: hash });
+        const nuevo = new AdminModel(admin);
         await nuevo.save();
     }
 
@@ -12,4 +11,9 @@ export default class AdminRepositoryMongo {
     const admin = await AdminModel.findOne({ correo });
     return !!admin; // true si existe, false si no
   }
+
+  async buscarPorCorreo(correo) {
+  return await AdminModel.findOne({ correo });
+}
+
 }

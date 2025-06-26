@@ -1,58 +1,105 @@
 body {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: linear-gradient(135deg, #c3cfe2, #0a387e);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Contenedor general */
 .login-container {
-    width: 100%;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
+/* Card estilo glassmorphism */
 .login-card {
-    max-width: 450px;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.7s ease-in-out;
 }
 
 h2 {
-    font-weight: 600;
-    font-size: 1.8rem;
-    color: #1e3c72;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1e3c72;
 }
 
+/* Inputs */
+.form-control {
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  border-color: #1e3c72;
+  box-shadow: 0 0 0 0.2rem rgba(30, 60, 114, 0.25);
+}
+
+/* Botones */
 .btn-primary {
-    background-color: #1e3c72;
-    border: none;
+  background-color: #1e3c72;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  letter-spacing: 0.5px;
 }
 
 .btn-primary:hover {
-    background-color: #16325c;
+  background-color: #16325c;
 }
 
 .btn-secondary {
-    background-color: #6c757d;
-    border: none;
+  background-color: #6c757d;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268;
+  background-color: #5a6268;
 }
 
+.btn-link {
+  color: #1e3c72;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: #0d6efd;
+}
+
+/* Etiquetas */
 .form-label {
-    font-weight: 500;
-    color: #333;
+  font-weight: 500;
+  color: #333;
 }
 
+/* Mensaje de error */
 #mensajeError {
-    font-size: 0.95rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Fade suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  } to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
