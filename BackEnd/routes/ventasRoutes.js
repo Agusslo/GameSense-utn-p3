@@ -6,6 +6,5 @@ export default function crearVentaRoutes(controller) {
 
   router.post('/', validarVenta, controller.registrarVentas.bind(controller));
   router.get('/', controller.listar.bind(controller));
-  router.post('/ventas', validarVenta, controller.registrarVentas.bind(controller));
   return router;
 }

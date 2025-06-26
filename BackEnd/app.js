@@ -35,11 +35,14 @@ const ventaController = new VentaController({
 
 app.use('/api/ventas', crearVentaRoutes(ventaController));
 
-
 // -------------------- ADMIN FRONTEND --------------------
 app.use('/admin', express.static(path.join(__dirname, 'adminFront')));
 
 // -------------------- CLIENTE FRONTEND --------------------
+app.get('/', (req, res) => {
+  res.redirect('/shop');
+});
+
 app.use('/shop', express.static(path.join(__dirname, '../FrontEnd')));
 
 // -------------------- PRODUCTOS --------------------
