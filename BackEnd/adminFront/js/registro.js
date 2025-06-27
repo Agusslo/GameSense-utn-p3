@@ -5,7 +5,6 @@ document.getElementById("registroForm").addEventListener("submit", async functio
     const contrasena = document.getElementById("contrasena").value.trim();
     const mensaje = document.getElementById("mensaje");
 
-  // Validación personalizada para @admin.com
     if (!correo.endsWith("@admin.com")) {
     mensaje.innerHTML = `<span class="text-danger">El correo debe terminar en @admin.com</span>`;
     return;
@@ -29,4 +28,14 @@ document.getElementById("registroForm").addEventListener("submit", async functio
     } catch (err) {
     mensaje.innerHTML = `<span class="text-danger">Error al conectar con el servidor</span>`;
     }
+});
+
+const toggle = document.getElementById("togglePassword");
+const input = document.getElementById("contrasena");
+
+toggle.addEventListener("click", () => {
+    const isPassword = input.type === "password";
+    input.type = isPassword ? "text" : "password";
+    toggle.classList.toggle("bi-eye");
+    toggle.classList.toggle("bi-eye-slash");
 });

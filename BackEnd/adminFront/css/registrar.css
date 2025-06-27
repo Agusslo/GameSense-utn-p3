@@ -76,3 +76,18 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Estilo para el ícono del ojito en el campo contraseña */
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  bottom: 12px;
+  cursor: pointer;
+  color: #6c757d;
+  font-size: 1.2rem;
+}
+
+input[type="password"] {
+  padding-right: 2.5rem;
+}
+

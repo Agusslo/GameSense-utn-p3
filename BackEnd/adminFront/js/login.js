@@ -29,3 +29,18 @@ function autocompletarLogin() {
   document.getElementById("correo").value = "admin@admin.com";
   document.getElementById("contrasena").value = "admin1234";
 }
+
+// Mostrar/Ocultar contraseña con ojito
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("togglePassword");
+  const input = document.getElementById("contrasena");
+
+  if (toggle && input) {
+    toggle.addEventListener("click", () => {
+      const isPassword = input.type === "password";
+      input.type = isPassword ? "text" : "password";
+      toggle.classList.toggle("bi-eye");
+      toggle.classList.toggle("bi-eye-slash");
+    });
+  }
+});
