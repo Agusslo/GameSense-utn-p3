@@ -79,7 +79,7 @@ function mostrarModal(index) {
     fetch("http://localhost:4000/api/productos")
     .then(res => res.json())
     .then(productos => {
-        const producto = productos[index];
+        const producto = productos[index]; 
         productoAEliminarId = producto._id;
 
         const modal = document.getElementById("modalConfirmacion");

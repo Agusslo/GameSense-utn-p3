@@ -31,6 +31,7 @@ const producto = await this.crearProducto.ejecutar(datosProducto);
       const actualizado = await this.actualizarProducto.ejecutar(id, datosActualizados);
       res.json(actualizado);
     } catch (e) {
+      console.log(e);
       res.status(500).json({ error: "Error al actualizar producto" });
     }
 }
