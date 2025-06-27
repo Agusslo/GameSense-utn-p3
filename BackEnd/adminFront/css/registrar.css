@@ -91,3 +91,137 @@ input[type="password"] {
   padding-right: 2.5rem;
 }
 
+/* ----- DRIVER.JS--- */
+
+
+/* Estilo para el popover, el overlay y el elemento resaltado */
+.driver-popover,
+.driver-overlay,
+.driver-highlighted-element {
+    box-sizing: border-box; 
+}
+
+/* Estilos generales del overlay */
+.driver-overlay {
+    background-color: rgba(0, 0, 0, 0.6) !important; 
+    transition: all 0.3s ease-in-out !important; 
+}
+
+/* Estilos del popover */
+.driver-popover {
+    background-color: #ffffff !important; 
+    color: #333333 !important; 
+    border-radius: 10px !important; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important; 
+    padding: 20px !important; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important; 
+}
+
+/* Estilos del título del popover */
+.driver-popover__title {
+    font-size: 1.3rem !important; 
+    font-weight: bold !important; 
+    margin-bottom: 12px !important; 
+    color: #007bff !important; 
+    text-align: center !important; 
+}
+
+/* Estilos de la descripción del popover */
+.driver-popover__description {
+    font-size: 1rem !important; 
+    line-height: 1.7 !important; 
+    margin-bottom: 20px !important; 
+    color: #555555 !important; 
+}
+
+/* Estilos del pie de página del popover */
+.driver-popover__footer {
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important; 
+    padding-top: 15px !important; 
+    border-top: 1px solid #eeeeee !important; 
+}
+
+/* Estilos de los botones de navegación */
+.driver-popover__footer button {
+    background-color: #28a745 !important; 
+    color: #ffffff !important; 
+    border: none !important; 
+    border-radius: 5px !important; 
+    padding: 10px 20px !important; 
+    cursor: pointer !important; 
+    font-size: 0.95rem !important; 
+    font-weight: 600 !important; 
+    transition: background-color 0.3s ease, transform 0.2s ease !important; 
+    min-width: 90px; 
+    margin-left: 10px; 
+}
+
+/* Estilo para los botones de navegación al pasar el ratón */
+.driver-popover__footer button:hover {
+    background-color: #218838 !important; 
+    transform: translateY(-1px); 
+}
+
+/* Estilo específico para el botón "Anterior" */
+.driver-popover__footer button.driver-popover__prev-btn {
+    background-color: #6c757d !important; 
+    color: #ffffff !important; 
+}
+
+/* Estilo para el botón "Anterior" al pasar el ratón */
+.driver-popover__footer button.driver-popover__prev-btn:hover {
+    background-color: #5a6268 !important; 
+}
+
+/* Estilo para el botón "Done" (Finalizar) */
+.driver-popover__footer button.driver-popover__next-btn.driver-popover__next-btn--done {
+    background-color: #dc3545 !important; 
+}
+
+/* Estilo para el botón "Done" (Finalizar) al pasar el ratón */
+.driver-popover__footer button.driver-popover__next-btn.driver-popover__next-btn--done:hover {
+    background-color: #c82333 !important; 
+}
+
+/* Estilo del texto de progreso */
+.driver-popover__progress-text {
+    color: #6c757d !important; 
+    font-size: 0.9rem !important; 
+    font-weight: 500 !important; 
+    flex-grow: 1; 
+    text-align: left; 
+}
+
+/* Estilo del botón de cerrar */
+.driver-popover__close-btn {
+    color: #6c757d !important; 
+    font-size: 1.5rem !important; 
+    top: 10px !important; 
+    right: 15px !important; 
+    transition: color 0.2s ease !important; 
+}
+
+/* Estilo del botón de cerrar al pasar el ratón */
+.driver-popover__close-btn:hover {
+    color: #333333 !important; 
+}
+
+/* Estilo del elemento resaltado */
+.driver-highlighted-element {
+    border: 3px solid #ffc107 !important; 
+    border-radius: 8px !important; 
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.5) !important; 
+    transition: all 0.3s ease-in-out !important; 
+}
+
+/* Estilos para el botón de ayuda */
+#btn-ayuda {
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; 
+}
