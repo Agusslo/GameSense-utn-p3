@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Milei Adorni Tech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+<body>
+    <header class="bg-dark text-white p-3 mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="h3 m-0">Ventas</h1>
+        <nav>
+        <a href="dashboard.html" class="btn btn-outline-light btn-sm">Inicio</a>
+        </nav>
+    </div>
+    </header>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input id="filtro-usuario" class="form-control" placeholder="Filtrar por usuario">
+        </div>
+        <div class="col-md-4">
+            <input id="filtro-fecha" type="date" class="form-control" placeholder="Filtrar por fecha">
+        </div>
+        <div class="col-md-4">
+            <button id="btn-filtrar" class="btn btn-primary w-100">Filtrar</button>
+        </div>
+    </div>
+
+
+    <div class="container mt-4">
+        <h2 class="mb-4">Listado de Ventas</h2>
+        <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+            <th>Usuario</th>
+            <th>Productos</th>
+            <th>Total</th>
+            <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-ventas-body">
+            <tr><td colspan="4" class="text-center">Cargando ventas...</td></tr>
+        </tbody>
+        </table>
+    </div>
+    <script src="./js/ventas.js"></script>
+
+</body>
+</html>
