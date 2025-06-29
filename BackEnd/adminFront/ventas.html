@@ -17,17 +17,20 @@
     </div>
     </header>
 
-    <div class="row mb-3">
-        <div class="col-md-4">
-            <input id="filtro-usuario" class="form-control" placeholder="Filtrar por usuario">
-        </div>
-        <div class="col-md-4">
-            <input id="filtro-fecha" type="date" class="form-control" placeholder="Filtrar por fecha">
-        </div>
-        <div class="col-md-4">
-            <button id="btn-filtrar" class="btn btn-primary w-100">Filtrar</button>
+    <div class="container mb-3">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <input id="filtro-usuario" class="form-control" placeholder="Filtrar por usuario">
+            </div>
+            <div class="col-md-4">
+                <input id="filtro-fecha" type="date" class="form-control" placeholder="Filtrar por fecha">
+            </div>
+            <div class="col-md-4">
+                <button id="btn-filtrar" class="btn btn-primary w-100">Filtrar</button>
+            </div>
         </div>
     </div>
+
 
 
     <div class="container mt-4">
@@ -46,7 +49,12 @@
         </tbody>
         </table>
     </div>
+    <div class="d-flex justify-content-center my-4">
+        <button id="btn-exportar-excel" class="btn btn-success">Exportar a Excel</button>
+    </div>
+
     <script src="./js/ventas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 </body>
 </html>

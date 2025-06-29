@@ -67,3 +67,18 @@ function renderizarVentas(ventas) {
     tbody.appendChild(fila);
   });
 }
+
+document.getElementById("btn-exportar-excel").addEventListener("click", () => {
+  const data = ventasOriginales.map(v => ({
+    Usuario: v.usuario,
+    Productos: v.productos.map(p => p.producto?.nombre + ' x' + p.cantidad).join(', '),
+    Total: v.total,
+    Fecha: new Date(v.fecha).toLocaleString()
+  }));
+
+  const worksheet = XLSX.utils.json_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Ventas");
+
+  XLSX.writeFile(workbook, "ventas.xlsx");
+});
