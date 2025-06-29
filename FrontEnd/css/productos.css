@@ -58,6 +58,14 @@ body.theme-light .hero h1,
 body.theme-light .hero p{
   color: black !important;
 }
+body.theme-light .btn-icono {
+  color: black;
+}
+
+body.theme-light .btn-icono:hover {
+  color: black
+}
+
 
 
 /* ======== BOTON ADMIN ======== */
@@ -76,4 +84,32 @@ body.theme-light .hero p{
 .btn-admin:hover {
   background: linear-gradient(90deg, #6BB13F, #388E3C);
   transform: scale(1.05);
+}
+
+.btn-icono {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.btn-icono:hover {
+  transform: scale(1.1);
+  color: #cdcdcd;
+}
+
+.paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem; 
+  margin: 1rem 0;
+}
+
+.paginacion span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  min-width: 100px; 
 }
