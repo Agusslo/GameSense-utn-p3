@@ -18,7 +18,7 @@
    ```bash 
    cd backend
    node app.js
-3. Accedé al panel administrativo desde:
+3. Accedé a la pagina web desde:
     ```bash
     http://localhost:4000
 
