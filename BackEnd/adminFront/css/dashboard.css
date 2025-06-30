@@ -71,7 +71,37 @@
     gap: 20px;
 }
 
+    /* --- GAMESENSE: BOTON--- */
 
+.gamesense-link {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.gamesense-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #7ac143;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.gamesense-link:hover::after {
+    transform: scaleX(1);
+}
+
+.gs-sense {
+    color: #7ac143;
+    font-weight: 400;
+}
 
 
 
