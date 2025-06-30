@@ -75,6 +75,7 @@ function renderizarVentas(ventas) {
   });
 }
 
+// --- INICIO DE LA SECCIÓN MODIFICADA ---
 document.getElementById("btn-exportar-excel").addEventListener("click", () => {
   if (ventasMostradas.length === 0) {
     alert("No hay ventas para exportar.");
@@ -90,19 +91,29 @@ document.getElementById("btn-exportar-excel").addEventListener("click", () => {
 
   const worksheet = XLSX.utils.json_to_sheet(data);
   const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, "Ventas");
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Ventas"); // Nombre ventana excel
 
-  // --- INICIO DE LA NUEVA MODIFICACIÓN ---
-  const fechaHoy = new Date().toISOString().slice(0, 10);
   let nombreArchivo = "";
+  const filtroUsuario = document.getElementById("filtro-usuario").value.trim();
+  const nombreUsuario = filtroUsuario ? `_${filtroUsuario}` : "";
 
   // Comparamos si la cantidad de ventas mostradas es igual a la original.
-  if (ventasMostradas.length === ventasOriginales.length) {
+  if (ventasMostradas.length === ventasOriginales.length) { //si no hay se llama reporte completo
+    const fechaHoy = new Date().toISOString().slice(0, 10);
     nombreArchivo = `reporte_completo_${fechaHoy}.xlsx`;
-  } else {
-    nombreArchivo = `ventas_filtradas_${fechaHoy}.xlsx`;
+  } else { // Si hay filtro aplicado
+    const fechasUnicas = [...new Set(ventasMostradas.map(v => v.fecha.slice(0, 10)))].sort(); // Despejamos solo la fecha.
+    
+    if (fechasUnicas.length === 1) {
+      // Si hay una sola fecha.
+      nombreArchivo = `ventas_filtradas${nombreUsuario}__${fechasUnicas[0]}.xlsx`;
+    } else {
+      // Si hay varias fechas.
+      const fechaInicio = fechasUnicas[0];
+      const fechaFin = fechasUnicas[fechasUnicas.length - 1];
+      nombreArchivo = `ventas_filtradas${nombreUsuario}_rango_${fechaInicio}_a_${fechaFin}.xlsx`;
+    }
   }
 
   XLSX.writeFile(workbook, nombreArchivo);
-  // --- FIN DE LA NUEVA MODIFICACIÓN ---
 });
