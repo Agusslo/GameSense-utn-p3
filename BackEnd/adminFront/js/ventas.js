@@ -1,4 +1,5 @@
 let ventasOriginales = [];
+let ventasMostradas = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
   await cargarVentas();
@@ -13,7 +14,7 @@ async function cargarVentas() {
     const response = await fetch("http://localhost:4000/api/ventas");
     if (!response.ok) throw new Error("Error al obtener ventas");
 
-    ventasOriginales = await response.json(); // copia local de todas las ventas.
+    ventasOriginales = await response.json();
     renderizarVentas(ventasOriginales);
   } catch (error) {
     console.error("Error al mostrar ventas:", error);
@@ -33,16 +34,11 @@ function aplicarFiltros() {
 
   if (fecha) {
     filtradas = filtradas.filter(v => {
-      // Convertir la fecha de la venta (que viene en UTC) a la zona horaria local del usuario.
       const fechaVenta = new Date(v.fecha);
-
-      // Formatear la fecha de la venta a 'YYYY-MM-DD' para que coincida con el formato del input de fecha.
       const year = fechaVenta.getFullYear();
       const month = (fechaVenta.getMonth() + 1).toString().padStart(2, '0');
       const day = fechaVenta.getDate().toString().padStart(2, '0');
       const fechaVentaLocal = `${year}-${month}-${day}`;
-      
-      // Comparar la fecha local de la venta con la fecha seleccionada en el filtro.
       return fechaVentaLocal === fecha;
     });
   }
@@ -50,6 +46,7 @@ function aplicarFiltros() {
 }
 
 function renderizarVentas(ventas) {
+  ventasMostradas = ventas;
   const tbody = document.getElementById("tabla-ventas-body");
   tbody.innerHTML = "";
 
@@ -62,10 +59,10 @@ function renderizarVentas(ventas) {
     const fila = document.createElement("tr");
 
     const productosHTML = venta.productos.map(p => {
-    const nombre = p.producto?.nombre || "Producto sin nombre";
-    const cantidad = p.cantidad || 1;
-    return `${nombre} x${cantidad}`;
-  }).join("<br>");
+      const nombre = p.producto?.nombre || "Producto sin nombre";
+      const cantidad = p.cantidad || 1;
+      return `${nombre} x${cantidad}`;
+    }).join("<br>");
 
 
     fila.innerHTML = `
@@ -79,9 +76,14 @@ function renderizarVentas(ventas) {
 }
 
 document.getElementById("btn-exportar-excel").addEventListener("click", () => {
-  const data = ventasOriginales.map(v => ({
+  if (ventasMostradas.length === 0) {
+    alert("No hay ventas para exportar.");
+    return;
+  }
+  
+  const data = ventasMostradas.map(v => ({
     Usuario: v.usuario,
-    Productos: v.productos.map(p => p.producto?.nombre + ' x' + p.cantidad).join(', '),
+    Productos: v.productos.map(p => (p.producto?.nombre || 'N/A') + ' x' + p.cantidad).join(', '),
     Total: v.total,
     Fecha: new Date(v.fecha).toLocaleString()
   }));
@@ -90,5 +92,17 @@ document.getElementById("btn-exportar-excel").addEventListener("click", () => {
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, "Ventas");
 
-  XLSX.writeFile(workbook, "ventas.xlsx");
+  // --- INICIO DE LA NUEVA MODIFICACIÓN ---
+  const fechaHoy = new Date().toISOString().slice(0, 10);
+  let nombreArchivo = "";
+
+  // Comparamos si la cantidad de ventas mostradas es igual a la original.
+  if (ventasMostradas.length === ventasOriginales.length) {
+    nombreArchivo = `reporte_completo_${fechaHoy}.xlsx`;
+  } else {
+    nombreArchivo = `ventas_filtradas_${fechaHoy}.xlsx`;
+  }
+
+  XLSX.writeFile(workbook, nombreArchivo);
+  // --- FIN DE LA NUEVA MODIFICACIÓN ---
 });
