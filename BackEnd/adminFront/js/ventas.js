@@ -13,7 +13,7 @@ async function cargarVentas() {
     const response = await fetch("http://localhost:4000/api/ventas");
     if (!response.ok) throw new Error("Error al obtener ventas");
 
-    ventasOriginales = await response.json();
+    ventasOriginales = await response.json(); // copia local de todas las ventas.
     renderizarVentas(ventasOriginales);
   } catch (error) {
     console.error("Error al mostrar ventas:", error);
@@ -33,11 +33,19 @@ function aplicarFiltros() {
 
   if (fecha) {
     filtradas = filtradas.filter(v => {
-      const fechaVenta = new Date(v.fecha).toISOString().split('T')[0];
-      return fechaVenta === fecha;
+      // Convertir la fecha de la venta (que viene en UTC) a la zona horaria local del usuario.
+      const fechaVenta = new Date(v.fecha);
+
+      // Formatear la fecha de la venta a 'YYYY-MM-DD' para que coincida con el formato del input de fecha.
+      const year = fechaVenta.getFullYear();
+      const month = (fechaVenta.getMonth() + 1).toString().padStart(2, '0');
+      const day = fechaVenta.getDate().toString().padStart(2, '0');
+      const fechaVentaLocal = `${year}-${month}-${day}`;
+      
+      // Comparar la fecha local de la venta con la fecha seleccionada en el filtro.
+      return fechaVentaLocal === fecha;
     });
   }
-
   renderizarVentas(filtradas);
 }
 
