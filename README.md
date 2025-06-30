@@ -37,7 +37,6 @@
 ### 🔹 Backend
 - Node.js + Express.js
 - MongoDB + Mongoose
-- EJS (vistas del panel administrativo)
 - Arquitectura MVC (Model-View-Controller)
 - CRUD completo de productos y usuarios
 - Registro de ventas
@@ -56,7 +55,6 @@
 
 ### 📅 Administrador (Backend)
 - Login con acceso predefinido (`admin@admin.com`).
-- Dashboard en EJS con vistas responsivas.
 - Funciones disponibles:
   - Alta de productos
   - Edición
@@ -90,7 +88,7 @@
 |--------------------------|---------------------------------------------------------------------------------------|
 | Paginación               | Navegación fluida entre productos de cada categoría.                                 |
 | Carrito persistente      | Se guarda incluso si el usuario recarga la página o cambia de sección.              |
-| Panel admin              | CRUD completo con Bootstrap + EJS.                                                  |
+| Panel admin              | CRUD completo con Bootstrap + CSS.                                                  |
 | Validaciones amigables   | Se evita comprar sin productos o sin nombre.                                        |  
 | Ticket final             | Muestra nombre del cliente, productos y total, con opción de reiniciar la sesión.   |
 
