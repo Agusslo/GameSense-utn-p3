@@ -54,9 +54,11 @@ function renderizarVentas(ventas) {
     const fila = document.createElement("tr");
 
     const productosHTML = venta.productos.map(p => {
-      if (!p.producto) return '';
-      return `${p.producto.nombre} x${p.cantidad}`;
-    }).join("<br>");
+    const nombre = p.producto?.nombre || "Producto sin nombre";
+    const cantidad = p.cantidad || 1;
+    return `${nombre} x${cantidad}`;
+  }).join("<br>");
+
 
     fila.innerHTML = `
       <td>${venta.usuario}</td>
