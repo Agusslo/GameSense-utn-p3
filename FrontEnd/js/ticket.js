@@ -175,12 +175,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
+});
+// Volver a incio (otro usuario)
 document.getElementById("confirmarReinicio").addEventListener("click", () => {
   localStorage.removeItem("nombreCliente");
   localStorage.removeItem("carrito");
   window.location.href = "index.html";
-});
-
-
 });
