@@ -12,6 +12,17 @@
 
 ---
 
+## 💡 ¿Cómo iniciar el proyecto?
+1. Abrí una terminal en la carpeta raíz del proyecto.
+2. Navegá hasta la carpeta del backend:
+   ```bash 
+   cd backend
+   node app.js
+3. Accedé al panel administrativo desde:
+    ```bash
+    http://localhost:4000
+
+---
 ## 🛠️ Tecnologías Utilizadas
 
 ### 🔹 Frontend
