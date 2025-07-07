@@ -13,6 +13,11 @@
 ---
 
 ## 💡 ¿Cómo iniciar el proyecto?
+📥 Requisitos previos
+
+Asegurate de tener instalada la versión actual de Node.js:
+👉 Descargar Node.js ([versión actual](https://nodejs.org/es/download/current))
+
 1. Abrí una terminal en la carpeta raíz del proyecto.
 2. Navegá hasta la carpeta del backend:
    ```bash 
